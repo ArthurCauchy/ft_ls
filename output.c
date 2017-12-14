@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/14 16:41:36 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/14 18:15:20 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 /*
 ** Prints the usage.
 */
+
+void	print_error(void)
+{
+	ft_putendl("error");
+}
 
 void	print_usage(void)
 {

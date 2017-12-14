@@ -11,6 +11,8 @@ plusieurs modes d'affichage :
 - option R
 - option tl
 - option tR
+- ...
 
+- PENSER a tester 'ls ""'
 
-PENSER a tester 'ls ""'
+- renommer options.c en param.c ou faire 2 fichiers

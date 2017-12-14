@@ -6,14 +6,19 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:36:33 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/14 10:19:19 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/14 18:59:52 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	main(int argc, char argv)
+int	main(int argc, char **argv)
 {
+	char	*options;
 
-	return (0);
+	if (!(options = ft_strnew(5)))
+		exit_error();
+	read_params(argc, argv, options);
+	ft_putendl(options);
+	return (EXIT_SUCCESS);
 }
