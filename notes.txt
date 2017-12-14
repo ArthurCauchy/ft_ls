@@ -1,0 +1,16 @@
+typedef struct	s_file
+{
+	char *filename;
+	int time_modif; // int ?
+}				t_file;
+
+plusieurs modes d'affichage :
+- normal
+- option t
+- option l
+- option R
+- option tl
+- option tR
+
+
+PENSER a tester 'ls ""'
