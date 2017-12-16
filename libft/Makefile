@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/15 16:31:24 by acauchy          ###   ########.fr        #
+#    Updated: 2017/12/16 17:07:43 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,23 +102,23 @@ $(OBJ_PATH)/%.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJ)
-	@echo $(COLOR_YELLOW)"Linking "$@"..."$(COLOR_RESET)
+	@echo -e $(COLOR_YELLOW)"Linking "$@"..."$(COLOR_RESET)
 	ar rcs $@ $^
-	@echo $(COLOR_GREEN)$(NAME)" successfully created."$(COLOR_RESET)
+	@echo -e $(COLOR_GREEN)$(NAME)" successfully created."$(COLOR_RESET)
 
 $(OBJ_PATH):
 	@mkdir -p $(OBJ_PATH)
 
 compile: $(OBJ_PATH)
-	@echo $(COLOR_YELLOW)"Compiling "$(NAME)"..."$(COLOR_RESET)
+	@echo -e $(COLOR_YELLOW)"Compiling "$(NAME)"..."$(COLOR_RESET)
 	@make $(NAME)
 
 clean:
-	@echo $(COLOR_RED)"Removing "$(OBJ_PATH)"..."$(COLOR_RESET)
-	@rm -Rf $(OBJ_PATH)
+	@echo -e $(COLOR_RED)"Removing "$(OBJ_PATH)"..."$(COLOR_RESET)
+	rm -Rf $(OBJ_PATH)
 
 fclean: clean
-	@echo $(COLOR_RED)"Removing "$(NAME)"..."$(COLOR_RESET)
-	@rm -Rf $(NAME)
+	@echo -e $(COLOR_RED)"Removing "$(NAME)"..."$(COLOR_RESET)
+	rm -Rf $(NAME)
 
 re: fclean all

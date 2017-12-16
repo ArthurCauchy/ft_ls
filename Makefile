@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/15 16:39:01 by acauchy          ###   ########.fr        #
+#    Updated: 2017/12/16 17:07:02 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,32 +42,32 @@ $(OBJ_PATH)/%.o: %.c
 	$(CC) -c $(CFLAGS) $< $(LIBFT_INCLUDE) -o $@
 
 $(NAME): $(OBJ)
-	@echo $(COLOR_YELLOW)"Linking "$@"..."$(COLOR_RESET)
+	@echo -e $(COLOR_YELLOW)"Linking "$@"..."$(COLOR_RESET)
 	$(CC) $^ $(LIBFT) -o $@
-	@echo $(COLOR_GREEN)$(NAME)" successfully created."$(COLOR_RESET)
+	@echo -e $(COLOR_GREEN)$(NAME)" successfully created."$(COLOR_RESET)
 
 $(OBJ_PATH):
-	mkdir -p $(OBJ_PATH)
+	@mkdir -p $(OBJ_PATH)
 
 compile: $(OBJ_PATH)
-	@echo $(COLOR_CYAN)"==Entering "$(LIBFT_PATH)"=="$(COLOR_RESET)
+	@echo -e $(COLOR_CYAN)"==Entering "$(LIBFT_PATH)"=="$(COLOR_RESET)
 	@make -C $(LIBFT_PATH)
-	@echo $(COLOR_CYAN)"==Exiting "$(LIBFT_PATH)"=="$(COLOR_RESET)
-	@echo $(COLOR_YELLOW)"Compiling "$(NAME)"..."$(COLOR_RESET)
+	@echo -e $(COLOR_CYAN)"==Exiting "$(LIBFT_PATH)"=="$(COLOR_RESET)
+	@echo -e $(COLOR_YELLOW)"Compiling "$(NAME)"..."$(COLOR_RESET)
 	@make $(NAME)
 
 clean:
-	@echo $(COLOR_RED)"Removing "$(OBJ_PATH)"..."$(COLOR_RESET)
-	@rm -Rf $(OBJ_PATH)
-	@echo $(COLOR_CYAN)"==Entering "$(LIBFT_PATH)"=="$(COLOR_RESET)
+	@echo -e $(COLOR_RED)"Removing "$(OBJ_PATH)"..."$(COLOR_RESET)
+	rm -Rf $(OBJ_PATH)
+	@echo -e $(COLOR_CYAN)"==Entering "$(LIBFT_PATH)"=="$(COLOR_RESET)
 	@make -C $(LIBFT_PATH) clean
-	@echo $(COLOR_CYAN)"==Exiting "$(LIBFT_PATH)"=="$(COLOR_RESET)
+	@echo -e $(COLOR_CYAN)"==Exiting "$(LIBFT_PATH)"=="$(COLOR_RESET)
 
 fclean: clean
-	@echo $(COLOR_RED)"Removing "$(NAME)"..."$(COLOR_RESET)
-	@rm -f $(NAME)
-	@echo $(COLOR_CYAN)"==Entering "$(LIBFT_PATH)"=="$(COLOR_RESET)
+	@echo -e $(COLOR_RED)"Removing "$(NAME)"..."$(COLOR_RESET)
+	rm -f $(NAME)
+	@echo -e $(COLOR_CYAN)"==Entering "$(LIBFT_PATH)"=="$(COLOR_RESET)
 	@make -C $(LIBFT_PATH) fclean
-	@echo $(COLOR_CYAN)"==Exiting "$(LIBFT_PATH)"=="$(COLOR_RESET)
+	@echo -e $(COLOR_CYAN)"==Exiting "$(LIBFT_PATH)"=="$(COLOR_RESET)
 
 re: fclean all
