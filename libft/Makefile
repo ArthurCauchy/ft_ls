@@ -6,9 +6,11 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/16 17:07:43 by arthur           ###   ########.fr        #
+#    Updated: 2017/12/18 13:08:38 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SHELL:=/bin/bash
 
 .PHONY: all clean fclean re compile
 

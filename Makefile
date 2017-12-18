@@ -6,9 +6,13 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/16 17:07:02 by arthur           ###   ########.fr        #
+#    Updated: 2017/12/18 16:24:45 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+SHELL:=/bin/bash
+
+.PHONY: all clean fclean re compile
 
 COLOR_GREEN = "\033[1;32;40m"
 COLOR_RED = "\033[1;31;40m"
@@ -16,15 +20,16 @@ COLOR_YELLOW = "\033[1;33;40m"
 COLOR_CYAN = "\033[1;36;40m"
 COLOR_RESET = "\033[0m"
 
-.PHONY: all clean fclean re compile
-
 NAME = ft_ls
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_NAME =	main.c \
+		params.c \
 		options.c \
+		fileinfo.c \
+		filelist.c \
 		output.c \
 		utils.c
 

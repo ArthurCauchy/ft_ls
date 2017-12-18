@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 10:01:37 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/14 19:00:13 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/18 13:23:26 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	add_option(char *options, char opt_char)
 ** Return: 0 if str isn't an option, 1 if it is
 */
 
-static int	read_option(char *str, char *options)
+int		read_option(char *str, char *options)
 {
 	int		i;
 
@@ -48,8 +48,8 @@ static int	read_option(char *str, char *options)
 	if (str[i] != '-')
 		return (0);
 	++i;
-	/*if (str[i] == '-')
-		return (-1); IS IT REALLY USEFULL ? */
+	if (str[i] == '-')
+		return (0);
 	while (str[i])
 	{
 		if (str[i] == 'l'
@@ -67,30 +67,4 @@ static int	read_option(char *str, char *options)
 		++i;
 	}
 	return (1);
-}
-
-/*
-** WARNING: 'options' parameter MUST be initialized
-** as a NTCTS of min size of 6 (\0 included)
-*/
-
-void		read_params(int argc, char **argv, char *options/*, t_flist *flist*/)
-{
-	int	i;
-	int	is_opt;
-
-	i = 1;
-	is_opt = 1;
-	while (i < argc)
-	{
-		if (is_opt && !read_option(argv[i], options))
-		{
-			is_opt = 0;
-		}
-		if (!is_opt)
-		{
-			// add it to file list flist
-		}
-		++i;
-	}
 }
