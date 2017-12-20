@@ -18,12 +18,20 @@ int	main(int argc, char **argv)
 	t_filelist	*filelist;
 	t_errlist	*errlist;
 
-	argc = 0;
+	argc = argc * 0;
 	filelist = NULL;
 	errlist = NULL;
 	if (!(options = ft_strnew(5)))
 		exit_error();
 	read_params(argv, options, &filelist, &errlist);
 	ft_putendl(options);
+	print_errlist(errlist);
+	t_filelist *cur = filelist;
+	while (cur)
+	{
+		print_l_line(cur);
+		cur = cur->next;
+	}
+	// et ensuite il faut tout free
 	return (EXIT_SUCCESS);
 }

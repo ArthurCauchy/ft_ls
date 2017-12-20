@@ -88,7 +88,7 @@ t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 	new->uid = file_info->st_uid;
 	new->gid = file_info->st_gid;
 	new->size = file_info->st_size;
-	new->mtime = file_info->st_mtimespec.tv_sec;
+	new->mtime = file_info->st_mtim.tv_sec;
 	if (new->mode[0] == 'l')
 		new->target_path = symlink_target_path(new->path, new->size);
 	else

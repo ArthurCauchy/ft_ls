@@ -13,6 +13,25 @@
 #include "ft_ls.h"
 
 /*
+** Check if the option is set.
+** return 1 : yes, return 0 : no
+*/
+
+int		option_check(char *options, char opt_char)
+{
+	int	i;
+
+	i = 0;
+	while (options[i])
+	{
+		if (options[i] == opt_char)
+			return (1);
+		++i;
+	}
+	return (0);
+}
+
+/*
 ** WARNING: 'options' parameter MUST be initialized
 ** as a NTCTS of min size of 6 (\0 included)
 ** Check if the option is already in the option array,
@@ -22,16 +41,9 @@
 static void	add_option(char *options, char opt_char)
 {
 	static int	opt_count = 0;
-	int			i;
 
-	i = 0;
-	while (options[i])
-	{
-		if (options[i] == opt_char)
-			return ;
-		++i;
-	}
-	options[opt_count++] = opt_char;
+	if (!option_check(options, opt_char))
+		options[opt_count++] = opt_char;
 }
 
 /*

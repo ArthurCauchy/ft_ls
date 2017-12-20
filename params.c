@@ -27,10 +27,8 @@ void		read_params(char **argv, char *options, t_filelist **filelist, t_errlist *
 		}
 		if (!is_opt)
 		{
-			//if (load_file(options, argv[i], filelist) == -1)
-			//	load_err(options, argv[i], errlist);
-			load_file(options, argv[i], filelist);
-			errlist = NULL; // silence warning. TEMPORARY
+			if (load_file(options, argv[i], filelist) == -1)
+				register_err(argv[i], errlist);
 		}
 		++i;
 	}

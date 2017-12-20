@@ -15,6 +15,7 @@
 
 # include <sys/stat.h>
 # include <sys/types.h>
+# include <sys/sysmacros.h>
 # include <pwd.h>
 # include <grp.h>
 # include <errno.h>
@@ -59,6 +60,13 @@ typedef struct	s_errlist
 void		print_error(void);
 void		print_usage(void);
 void		print_illegal_option(char c);
+void		print_errlist(t_errlist *errlist);
+
+/*
+** output_l.c
+*/
+
+void		print_l_line(t_filelist *filelist);
 
 /*
 ** utils.c
@@ -76,6 +84,7 @@ void		read_params(char **argv, char *options, t_filelist **filelist, t_errlist *
 ** options.c
 */
 
+int			option_check(char *options, char opt_char);
 int			read_option(char *str, char *options);
 
 /*
@@ -85,9 +94,24 @@ int			read_option(char *str, char *options);
 t_fileinfo	*fileinfo_new(char *input, struct stat *file_info);
 
 /*
+** compare.c
+*/
+
+int					cmp_default(t_filelist* fl1, t_filelist *fl2);
+int					cmp_r(t_filelist* fl1, t_filelist *fl2);
+int					cmp_t(t_filelist* fl1, t_filelist *fl2);
+int					cmp_tr(t_filelist* fl1, t_filelist *fl2);
+
+/*
 ** filelist.c
 */
 
 int			load_file(char *options, char *input, t_filelist **filelist);
+
+/*
+** errlist.c
+*/
+
+void		register_err(char *input, t_errlist **errlist);
 
 #endif

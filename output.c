@@ -32,3 +32,14 @@ void	print_illegal_option(char c)
 	ft_putchar(c);
 	ft_putchar('\n');
 }
+
+void	print_errlist(t_errlist *errlist)
+{
+	while (errlist)
+	{
+		ft_putstr(errlist->input);
+		ft_putstr(": ");
+		ft_putendl(errlist->errmsg);
+		errlist = errlist->next;
+	}
+}

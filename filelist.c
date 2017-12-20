@@ -27,19 +27,49 @@ static t_filelist	*filelist_new(char *input, struct stat *file_info)
 	return (new);
 }
 
-static t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelist *new)
+static void				filelist_insert(t_filelist **filelist,
+		t_filelist *new,
+		int (*cmp)(t_filelist*, t_filelist*))
 {
 	t_filelist	*cur;
+	t_filelist	*prev;
 
-	options = NULL; // silence warning. TEMP
+	cur = *filelist;
+	prev = NULL;
+	while (cur)
+	{
+		if (cmp(new, cur) < 0)
+		{
+			if (prev)
+				prev->next = new;
+			else
+				*filelist = new;
+			new->next = cur;
+			return ;
+		}
+		else
+		{
+			prev = cur;
+			cur = cur->next;
+		}
+	}
+	prev->next = new;
+}
+
+static t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelist *new)
+{
 	if (!*filelist)
 		*filelist = new;
 	else
 	{
-		cur = *filelist;
-		while (cur->next) // a order par ordre alphabetique
-			cur = cur->next;
-		cur->next = new;
+		if (option_check(options, 't') && option_check(options, 'r'))
+			filelist_insert(filelist, new, &cmp_tr);
+		else if (option_check(options, 't'))
+			filelist_insert(filelist, new, &cmp_t);
+		else if (option_check(options, 'r'))
+			filelist_insert(filelist, new, &cmp_r);
+		else
+			filelist_insert(filelist, new, &cmp_default);
 	}
 	return (filelist);
 }

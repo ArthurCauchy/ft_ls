@@ -29,8 +29,11 @@ SRC_NAME =	main.c \
 		params.c \
 		options.c \
 		fileinfo.c \
+		compare.c \
 		filelist.c \
+		errlist.c \
 		output.c \
+		output_l.c \
 		utils.c
 
 OBJ_PATH = objs
