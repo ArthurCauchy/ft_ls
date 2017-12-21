@@ -6,7 +6,7 @@
 /*   By: acauchy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 10:12:28 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/11 17:07:38 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/21 16:08:55 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 
 # include <string.h>
+# include <stdarg.h>
 
 typedef struct	s_list
 {
@@ -21,6 +22,13 @@ typedef struct	s_list
 	size_t			content_size;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct	s_arg
+{
+	int							alignleft;
+	int							width;
+	void						(*print_fct)(struct s_arg*, void*);
+}				t_arg;
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void	*s, size_t n);
@@ -93,5 +101,15 @@ t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 int				ft_swap(void **ptr1, void **ptr2, size_t size1, size_t size2);
 int				ft_sqrt(int nb);
+int				ft_nbrlen(long long nb);
+void			ft_miniprint(char *str, ...);
+
+/*
+** The following functions MUST NOT be used.
+*/
+
+void			print_errortype(t_arg *arg, void *realarg);
+void			print_integer(t_arg *arg, void *realarg);
+void			print_string(t_arg *arg, void *realarg);
 
 #endif

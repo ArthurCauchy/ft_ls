@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/18 13:08:38 by acauchy          ###   ########.fr        #
+#    Updated: 2017/12/21 16:08:35 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,10 @@ SRC_NAME = ft_memset.c \
 		 ft_lstiter.c \
 		 ft_lstmap.c \
 		 ft_swap.c \
-		 ft_sqrt.c
+		 ft_sqrt.c \
+		 ft_nbrlen.c \
+		 ft_miniprint.c \
+		 ft_printfcts.c
 
 OBJ_PATH = objs
 OBJ_NAME = $(SRC_NAME:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/18 16:32:50 by acauchy          ###   ########.fr       */
+/*   Updated: 2017/12/21 17:03:21 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <sys/stat.h>
 # include <sys/types.h>
-# include <sys/sysmacros.h>
+# include <sys/sysmacros.h> // file not found on DARWIN
 # include <pwd.h>
 # include <grp.h>
 # include <errno.h>
