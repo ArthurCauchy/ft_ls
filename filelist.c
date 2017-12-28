@@ -12,7 +12,7 @@
 
 #include "ft_ls.h"
 
-static t_filelist	*filelist_new(char *input, struct stat *file_info)
+t_filelist	*filelist_new(char *input, struct stat *file_info)
 {
 	t_filelist	*new;
 
@@ -27,7 +27,7 @@ static t_filelist	*filelist_new(char *input, struct stat *file_info)
 	return (new);
 }
 
-static void				filelist_insert(t_filelist **filelist,
+void				filelist_insert(t_filelist **filelist,
 		t_filelist *new,
 		int (*cmp)(t_filelist*, t_filelist*))
 {
@@ -56,7 +56,7 @@ static void				filelist_insert(t_filelist **filelist,
 	prev->next = new;
 }
 
-static t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelist *new)
+t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelist *new)
 {
 	if (!*filelist)
 		*filelist = new;
@@ -72,14 +72,4 @@ static t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelis
 			filelist_insert(filelist, new, &cmp_default);
 	}
 	return (filelist);
-}
-
-int				load_file(char *options, char *input, t_filelist **filelist)
-{
-	struct stat	file_info;
-
-	if (lstat(input, &file_info) < 0)
-		return (-1);
-	filelist_add(options, filelist, filelist_new(input, &file_info));
-	return (0);
 }

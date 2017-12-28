@@ -1,9 +1,3 @@
-typedef struct	s_file
-{
-	char *filename;
-	int time_modif; // int ?
-}				t_file;
-
 plusieurs modes d'affichage :
 - normal
 - option t
@@ -13,6 +7,12 @@ plusieurs modes d'affichage :
 - option tR
 - ...
 
-- PENSER a tester 'ls ""'
 
-- renommer options.c en param.c ou faire 2 fichiers
+- tester récursif qui passe plusieurs fois au meme endroit
+- tester filename='\0'
+- tester 2 filename identiques
+- tester 2 foldername identique (afficher deux fois)
+- tester filename avec quotes
+- ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
+- ajouter dirlist : {nom du dossier, filelist : fichiers contenus, dossier suivant (dans la liste, pas subfolder)}
+- gerer les subfolders intelligement

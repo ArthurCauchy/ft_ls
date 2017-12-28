@@ -12,7 +12,22 @@
 
 #include "ft_ls.h"
 
-void		read_params(char **argv, char *options, t_filelist **filelist, t_errlist **errlist)
+int				load_file(char *options, char *input, t_filelist **filelist, t_dirlist **dirlist)
+{
+	struct stat	stat_info;
+	t_fileinfo	*file_info;
+
+	if (lstat(input, &stat_info) < 0
+			|| !filelist_new(input, &stat_info))
+		return (-1);
+	if (file_info->mode[0] == 'd')
+		dirlist_add(options, dirlist, file_info);
+	else
+		filelist_add(options, filelist, file_info);
+	return (0);
+}
+
+void		read_params(char **argv, char *options, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist) // TODO regrouper les params de list ou passer options en global
 {
 	int	i;
 	int	is_opt;
@@ -27,7 +42,7 @@ void		read_params(char **argv, char *options, t_filelist **filelist, t_errlist *
 		}
 		if (!is_opt)
 		{
-			if (load_file(options, argv[i], filelist) == -1)
+			if (load_file(options, argv[i], filelist, dirlist) == -1)
 				register_err(argv[i], errlist);
 		}
 		++i;

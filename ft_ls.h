@@ -44,14 +44,20 @@ typedef struct	s_filelist
 {
 	struct s_fileinfo	*fileinfo;
 	struct s_filelist	*next;
-}				t_filelist;
+}								t_filelist;
+
+typedef struct	s_dirlist
+{
+	struct s_fileinfo	*fileinfo;
+	struct s_filelist	*files;
+}								t_dirlist;
 
 typedef struct	s_errlist
 {
 	char				*input;
 	char				*errmsg;
 	struct s_errlist	*next;
-}				t_errlist;
+}								t_errlist;
 
 /*
 ** output.c
@@ -78,6 +84,7 @@ void		exit_error(void);
 ** params.c
 */
 
+int			load_file(char *options, char *input, t_filelist **filelist, t_dirlist **dirlist);
 void		read_params(char **argv, char *options, t_filelist **filelist, t_errlist **errlist);
 
 /*
@@ -106,7 +113,15 @@ int					cmp_tr(t_filelist* fl1, t_filelist *fl2);
 ** filelist.c
 */
 
-int			load_file(char *options, char *input, t_filelist **filelist);
+t_filelist  *filelist_new(char *input, struct stat *file_info);
+void        filelist_insert(t_filelist **filelist,
+		t_filelist *new,
+		int (*cmp)(t_filelist*, t_filelist*));
+t_filelist  **filelist_add(char *options, t_filelist **filelist, t_filelist *new);
+
+/*
+** dirlist.c
+*/
 
 /*
 ** errlist.c
