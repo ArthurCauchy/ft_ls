@@ -49,8 +49,8 @@ static void	printnnbr(long long nbr, int *i, int n)
 
 void		print_errortype(t_arg *arg, void *realarg)
 {
-	arg = NULL;
 	realarg = arg;
+	arg = realarg;
 	ft_putstr("(type error)");
 }
 
@@ -61,7 +61,7 @@ void		print_integer(t_arg *arg, void *realarg)
 	int			padding;
 	int			i;
 	
-	nbr = (int)realarg;
+	nbr = *(int*)realarg;
 	len = ft_nbrlen(nbr);
 	padding = arg->width - len;
 	i = 0;
