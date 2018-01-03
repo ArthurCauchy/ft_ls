@@ -31,6 +31,7 @@ SRC_NAME =	main.c \
 		fileinfo.c \
 		compare.c \
 		filelist.c \
+		dirlist.c \
 		errlist.c \
 		output.c \
 		output_l.c \

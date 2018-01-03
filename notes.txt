@@ -1,18 +1,9 @@
-plusieurs modes d'affichage :
-- normal
-- option t
-- option l
-- option R
-- option tl
-- option tR
-- ...
-
-
 - tester récursif qui passe plusieurs fois au meme endroit
 - tester filename='\0'
 - tester 2 filename identiques
 - tester 2 foldername identique (afficher deux fois)
 - tester filename avec quotes
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
-- ajouter dirlist : {nom du dossier, filelist : fichiers contenus, dossier suivant (dans la liste, pas subfolder)}
 - gerer les subfolders intelligement
+- -d > -R
+- faire en sorte que les fonctions de cmp puissent gerer des filelist ET des dirlist

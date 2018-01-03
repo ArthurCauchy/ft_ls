@@ -50,6 +50,7 @@ typedef struct	s_dirlist
 {
 	struct s_fileinfo	*fileinfo;
 	struct s_filelist	*files;
+	struct s_dirlist	*next;
 }								t_dirlist;
 
 typedef struct	s_errlist
@@ -85,7 +86,7 @@ void		exit_error(void);
 */
 
 int			load_file(char *options, char *input, t_filelist **filelist, t_dirlist **dirlist);
-void		read_params(char **argv, char *options, t_filelist **filelist, t_errlist **errlist);
+void		read_params(char **argv, char *options, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist);
 
 /*
 ** options.c
@@ -104,24 +105,25 @@ t_fileinfo	*fileinfo_new(char *input, struct stat *file_info);
 ** compare.c
 */
 
-int					cmp_default(t_filelist* fl1, t_filelist *fl2);
-int					cmp_r(t_filelist* fl1, t_filelist *fl2);
-int					cmp_t(t_filelist* fl1, t_filelist *fl2);
-int					cmp_tr(t_filelist* fl1, t_filelist *fl2);
+int					cmp_default(t_fileinfo *f1, t_fileinfo *f2);
+int					cmp_r(t_fileinfo *f1, t_fileinfo *f2);
+int					cmp_t(t_fileinfo *f1, t_fileinfo *f2);
+int					cmp_tr(t_fileinfo *f1, t_fileinfo *f2);
 
 /*
 ** filelist.c
 */
 
-t_filelist  *filelist_new(char *input, struct stat *file_info);
-void        filelist_insert(t_filelist **filelist,
-		t_filelist *new,
-		int (*cmp)(t_filelist*, t_filelist*));
+t_filelist  *filelist_new(char *input, struct stat *stat_info);
 t_filelist  **filelist_add(char *options, t_filelist **filelist, t_filelist *new);
 
 /*
 ** dirlist.c
 */
+
+t_dirlist 	*dirlist_new(char *input,
+		struct stat *stat_info);
+t_dirlist		**dirlist_add(char *options, t_dirlist **dirlist, t_dirlist *new);
 
 /*
 ** errlist.c

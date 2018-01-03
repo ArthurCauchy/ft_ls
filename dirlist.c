@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filelist.c                                         :+:      :+:    :+:   */
+/*   dirlist.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,29 +12,31 @@
 
 #include "ft_ls.h"
 
-t_filelist	*filelist_new(char *input, struct stat *stat_info)
+t_dirlist	*dirlist_new(char *input,
+		struct stat *stat_info)
 {
-	t_filelist	*new;
+	t_dirlist	*new;
 
-	if (!(new = (t_filelist*)malloc(sizeof(t_filelist))))
+	if (!(new = (t_dirlist*)malloc(sizeof(t_dirlist))))
 		return (NULL);
 	if (!(new->fileinfo = fileinfo_new(input, stat_info)))
 	{
 		free(new);
 		return (NULL);
 	}
+	new->files = NULL;
 	new->next = NULL;
 	return (new);
 }
 
-static void	filelist_insert(t_filelist **filelist,
-		t_filelist *new,
+void				dirlist_insert(t_dirlist **dirlist,
+		t_dirlist *new,
 		int (*cmp)(t_fileinfo*, t_fileinfo*))
 {
-	t_filelist	*cur;
-	t_filelist	*prev;
+	t_dirlist	*cur;
+	t_dirlist	*prev;
 
-	cur = *filelist;
+	cur = *dirlist;
 	prev = NULL;
 	while (cur)
 	{
@@ -43,7 +45,7 @@ static void	filelist_insert(t_filelist **filelist,
 			if (prev)
 				prev->next = new;
 			else
-				*filelist = new;
+				*dirlist = new;
 			new->next = cur;
 			return ;
 		}
@@ -56,20 +58,20 @@ static void	filelist_insert(t_filelist **filelist,
 	prev->next = new;
 }
 
-t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelist *new)
+t_dirlist	**dirlist_add(char *options, t_dirlist **dirlist, t_dirlist *new)
 {
-	if (!*filelist)
-		*filelist = new;
+	if (!*dirlist)
+		*dirlist = new;
 	else
 	{
 		if (option_check(options, 't') && option_check(options, 'r'))
-			filelist_insert(filelist, new, &cmp_tr);
+			dirlist_insert(dirlist, new, &cmp_tr);
 		else if (option_check(options, 't'))
-			filelist_insert(filelist, new, &cmp_t);
+			dirlist_insert(dirlist, new, &cmp_t);
 		else if (option_check(options, 'r'))
-			filelist_insert(filelist, new, &cmp_r);
+			dirlist_insert(dirlist, new, &cmp_r);
 		else
-			filelist_insert(filelist, new, &cmp_default);
+			dirlist_insert(dirlist, new, &cmp_default);
 	}
-	return (filelist);
+	return (dirlist);
 }
