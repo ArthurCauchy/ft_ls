@@ -24,7 +24,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <dirent.h>
 # include "libft.h"
+
+# define MAX_PATH_SIZE 4096
 
 typedef struct	s_fileinfo
 {
@@ -70,16 +73,24 @@ void		print_illegal_option(char c);
 void		print_errlist(t_errlist *errlist);
 
 /*
+** output_dir.c
+*/
+
+void		print_dir(char *options, t_dirlist *dir);
+
+/*
 ** output_l.c
 */
 
-void		print_l_line(t_filelist *filelist);
+void		print_l_line(t_fileinfo *fileinfo, int short_name);
 
 /*
 ** utils.c
 */
 
 void		exit_error(void);
+char		*get_name_only(char *path);
+char		*get_filepath(char *dirpath, char *filename);
 
 /*
 ** params.c
@@ -121,8 +132,7 @@ t_filelist  **filelist_add(char *options, t_filelist **filelist, t_filelist *new
 ** dirlist.c
 */
 
-t_dirlist 	*dirlist_new(char *input,
-		struct stat *stat_info);
+t_dirlist 	*dirlist_new(char *input, struct stat *stat_info);
 t_dirlist		**dirlist_add(char *options, t_dirlist **dirlist, t_dirlist *new);
 
 /*

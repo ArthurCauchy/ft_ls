@@ -6,4 +6,4 @@
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
 - gerer les subfolders intelligement
 - -d > -R
-- faire en sorte que les fonctions de cmp puissent gerer des filelist ET des dirlist
+- vérifier qu'on output bien sur la bonne sortie les erreurs et messages

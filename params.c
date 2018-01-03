@@ -19,11 +19,9 @@ int				load_file(char *options, char *input, t_filelist **filelist, t_dirlist **
 	if (lstat(input, &stat_info) < 0)
 		return (-1);
 	if (S_ISDIR(stat_info.st_mode))
-		dirlist_add(options, dirlist,
-				dirlist_new(input, &stat_info));
+		dirlist_add(options, dirlist, dirlist_new(input, &stat_info));
 	else
-		filelist_add(options, filelist,
-				filelist_new(input, &stat_info));
+		filelist_add(options, filelist, filelist_new(input, &stat_info));
 	return (0);
 }
 

@@ -17,3 +17,47 @@ void	exit_error(void)
 	print_error();
 	exit(EXIT_FAILURE);
 }
+
+char	*get_name_only(char *path)
+{
+	char *name_start;
+	int		tmp;
+
+	name_start = path;
+	tmp = 0;
+	while (*path)
+	{
+		if (tmp == 1)
+		{
+			name_start = path;
+			tmp = 0;
+		}
+		else if (*path == '/')
+			tmp = 1;
+		++path;
+	}
+	return (name_start);
+}
+
+char	*get_filepath(char *dirpath, char *filename)
+{
+	static char	filepath[MAX_PATH_SIZE];
+	size_t			i;
+
+	i = 0;
+	while (*dirpath)
+	{
+		filepath[i] = *dirpath;
+		++dirpath;
+		++i;
+	}
+	filepath[i] = '/';
+	while (*filename)
+	{
+		filepath[i] = *filename;
+		++filename;
+		++i;
+	}
+	filepath[i] = '\0';
+	return ft_strdup(filepath);
+}
