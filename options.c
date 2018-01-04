@@ -17,14 +17,14 @@
 ** return 1 : yes, return 0 : no
 */
 
-int		option_check(char *options, char opt_char)
+int		option_check(char opt_char)
 {
 	int	i;
 
 	i = 0;
-	while (options[i])
+	while (g_options[i])
 	{
-		if (options[i] == opt_char)
+		if (g_options[i] == opt_char)
 			return (1);
 		++i;
 	}
@@ -38,12 +38,12 @@ int		option_check(char *options, char opt_char)
 ** and if it isn't, add it.
 */
 
-static void	add_option(char *options, char opt_char)
+static void	add_option(char opt_char)
 {
 	static int	opt_count = 0;
 
-	if (!option_check(options, opt_char))
-		options[opt_count++] = opt_char;
+	if (!option_check(opt_char))
+		g_options[opt_count++] = opt_char;
 }
 
 /*
@@ -52,7 +52,7 @@ static void	add_option(char *options, char opt_char)
 ** Return: 0 if str isn't an option, 1 if it is
 */
 
-int		read_option(char *str, char *options)
+int		read_option(char *str)
 {
 	int		i;
 
@@ -69,7 +69,7 @@ int		read_option(char *str, char *options)
 				|| str[i] == 'a'
 				|| str[i] == 'r'
 				|| str[i] == 't')
-			add_option(options, str[i]);
+			add_option(str[i]);
 		else
 		{
 			print_illegal_option(str[i]);

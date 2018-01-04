@@ -29,6 +29,8 @@
 
 # define MAX_PATH_SIZE 4096
 
+extern char			g_options[64];;
+
 typedef struct	s_fileinfo
 {
 	char	*path;
@@ -76,7 +78,7 @@ void		print_errlist(t_errlist *errlist);
 ** output_dir.c
 */
 
-void		print_dir(char *options, t_dirlist *dir);
+void		print_dir(t_dirlist *dir);
 
 /*
 ** output_l.c
@@ -96,15 +98,15 @@ char		*get_filepath(char *dirpath, char *filename);
 ** params.c
 */
 
-int			load_file(char *options, char *input, t_filelist **filelist, t_dirlist **dirlist);
-void		read_params(char **argv, char *options, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist);
+int			load_file(char *input, t_filelist **filelist, t_dirlist **dirlist);
+void		read_params(char **argv, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist);
 
 /*
 ** options.c
 */
 
-int			option_check(char *options, char opt_char);
-int			read_option(char *str, char *options);
+int			option_check(char opt_char);
+int			read_option(char *str);
 
 /*
 ** fileinfo.c
@@ -126,14 +128,14 @@ int					cmp_tr(t_fileinfo *f1, t_fileinfo *f2);
 */
 
 t_filelist  *filelist_new(char *input, struct stat *stat_info);
-t_filelist  **filelist_add(char *options, t_filelist **filelist, t_filelist *new);
+t_filelist  **filelist_add(t_filelist **filelist, t_filelist *new);
 
 /*
 ** dirlist.c
 */
 
 t_dirlist 	*dirlist_new(char *input, struct stat *stat_info);
-t_dirlist		**dirlist_add(char *options, t_dirlist **dirlist, t_dirlist *new);
+t_dirlist		**dirlist_add(t_dirlist **dirlist, t_dirlist *new);
 
 /*
 ** errlist.c

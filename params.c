@@ -12,20 +12,20 @@
 
 #include "ft_ls.h"
 
-int				load_file(char *options, char *input, t_filelist **filelist, t_dirlist **dirlist)
+int				load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
 {
 	struct stat	stat_info;
 
 	if (lstat(input, &stat_info) < 0)
 		return (-1);
 	if (S_ISDIR(stat_info.st_mode))
-		dirlist_add(options, dirlist, dirlist_new(input, &stat_info));
+		dirlist_add(dirlist, dirlist_new(input, &stat_info));
 	else
-		filelist_add(options, filelist, filelist_new(input, &stat_info));
+		filelist_add(filelist, filelist_new(input, &stat_info));
 	return (0);
 }
 
-void		read_params(char **argv, char *options, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist) // TODO regrouper les params de list ou passer options en global
+void		read_params(char **argv, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist)
 {
 	int	i;
 	int	is_opt;
@@ -34,13 +34,13 @@ void		read_params(char **argv, char *options, t_filelist **filelist, t_dirlist *
 	is_opt = 1;
 	while (argv[i])
 	{
-		if (is_opt && !read_option(argv[i], options))
+		if (is_opt && !read_option(argv[i]))
 		{
 			is_opt = 0;
 		}
 		if (!is_opt)
 		{
-			if (load_file(options, argv[i], filelist, dirlist) == -1)
+			if (load_file(argv[i], filelist, dirlist) == -1)
 				register_err(argv[i], errlist);
 		}
 		++i;

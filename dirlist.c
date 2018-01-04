@@ -58,17 +58,17 @@ void				dirlist_insert(t_dirlist **dirlist,
 	prev->next = new;
 }
 
-t_dirlist	**dirlist_add(char *options, t_dirlist **dirlist, t_dirlist *new)
+t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 {
 	if (!*dirlist)
 		*dirlist = new;
 	else
 	{
-		if (option_check(options, 't') && option_check(options, 'r'))
+		if (option_check('t') && option_check('r'))
 			dirlist_insert(dirlist, new, &cmp_tr);
-		else if (option_check(options, 't'))
+		else if (option_check('t'))
 			dirlist_insert(dirlist, new, &cmp_t);
-		else if (option_check(options, 'r'))
+		else if (option_check('r'))
 			dirlist_insert(dirlist, new, &cmp_r);
 		else
 			dirlist_insert(dirlist, new, &cmp_default);

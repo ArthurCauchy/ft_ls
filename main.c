@@ -12,9 +12,10 @@
 
 #include "ft_ls.h"
 
-int	main(int argc, char **argv)
+char	g_options[64];
+
+int		main(int argc, char **argv)
 {
-	char		*options;
 	t_filelist	*filelist;
 	t_dirlist	*dirlist;
 	t_errlist	*errlist;
@@ -23,10 +24,7 @@ int	main(int argc, char **argv)
 	filelist = NULL;
 	dirlist = NULL;
 	errlist = NULL;
-	if (!(options = ft_strnew(5)))
-		exit_error();
-	read_params(argv, options, &filelist, &dirlist, &errlist);
-	ft_putendl(options);
+	read_params(argv, &filelist, &dirlist, &errlist);
 	print_errlist(errlist);
 	t_filelist *cur = filelist;
 	while (cur)
@@ -37,7 +35,7 @@ int	main(int argc, char **argv)
 	t_dirlist *cur2 = dirlist;
 	while (cur2)
 	{
-		print_dir(options, cur2);
+		print_dir(cur2);
 		cur2 = cur2->next;
 	}
 	// et ensuite il faut tout free

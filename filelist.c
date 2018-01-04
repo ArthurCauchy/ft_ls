@@ -56,17 +56,17 @@ static void	filelist_insert(t_filelist **filelist,
 	prev->next = new;
 }
 
-t_filelist	**filelist_add(char *options, t_filelist **filelist, t_filelist *new)
+t_filelist	**filelist_add(t_filelist **filelist, t_filelist *new)
 {
 	if (!*filelist)
 		*filelist = new;
 	else
 	{
-		if (option_check(options, 't') && option_check(options, 'r'))
+		if (option_check('t') && option_check('r'))
 			filelist_insert(filelist, new, &cmp_tr);
-		else if (option_check(options, 't'))
+		else if (option_check('t'))
 			filelist_insert(filelist, new, &cmp_t);
-		else if (option_check(options, 'r'))
+		else if (option_check('r'))
 			filelist_insert(filelist, new, &cmp_r);
 		else
 			filelist_insert(filelist, new, &cmp_default);

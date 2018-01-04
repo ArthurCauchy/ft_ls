@@ -1,6 +1,6 @@
 #include "ft_ls.h"
 
-int		explore_dir(char *options, char *dirpath, t_filelist **files, t_dirlist **subdirs)
+int		explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 {
 	DIR						*dir;
 	struct dirent	*file_tmp;
@@ -15,14 +15,14 @@ int		explore_dir(char *options, char *dirpath, t_filelist **files, t_dirlist **s
 		tmp_name = get_filepath(dirpath, file_tmp->d_name);
 		if (lstat(tmp_name, &stat_info) < 0)
 			return (-1);
-		filelist_add(options, files, filelist_new(tmp_name, &stat_info));
+		filelist_add(files, filelist_new(tmp_name, &stat_info));
 		if (S_ISDIR(stat_info.st_mode))
-			dirlist_add(options, subdirs, dirlist_new(tmp_name, &stat_info));
+			dirlist_add(subdirs, dirlist_new(tmp_name, &stat_info));
 	}
 	return (0);
 }
 
-void	print_dir(char *options, t_dirlist *dir)
+void	print_dir(t_dirlist *dir)
 {
 	t_filelist	*files;
 	t_dirlist		*subdirs;
@@ -33,7 +33,7 @@ void	print_dir(char *options, t_dirlist *dir)
 	ft_putstr(dir->fileinfo->path);
 	ft_putendl(":");
 	// TODO print total
-	explore_dir(options, dir->fileinfo->path, &files, &subdirs);
+	explore_dir(dir->fileinfo->path, &files, &subdirs);
 	while (files)
 	{
 		print_l_line(files->fileinfo, 1);
