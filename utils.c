@@ -52,6 +52,7 @@ char	*get_filepath(char *dirpath, char *filename)
 		++i;
 	}
 	filepath[i] = '/';
+	++i;
 	while (*filename)
 	{
 		filepath[i] = *filename;

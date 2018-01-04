@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	t_dirlist *cur2 = dirlist;
 	while (cur2)
 	{
-		print_dir(cur2);
+		print_dir(options, cur2);
 		cur2 = cur2->next;
 	}
 	// et ensuite il faut tout free
