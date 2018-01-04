@@ -35,6 +35,7 @@ SRC_NAME =	main.c \
 		errlist.c \
 		output.c \
 		output_dir.c \
+		output_file.c \
 		output_l.c \
 		utils.c
 

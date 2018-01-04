@@ -29,7 +29,7 @@ int		main(int argc, char **argv)
 	t_filelist *cur = filelist;
 	while (cur)
 	{
-		print_l_line(cur->fileinfo, 0);
+		print_file(cur->fileinfo, 0);
 		cur = cur->next;
 	}
 	t_dirlist *cur2 = dirlist;

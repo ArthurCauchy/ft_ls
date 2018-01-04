@@ -36,7 +36,7 @@ void	print_dir(t_dirlist *dir)
 	explore_dir(dir->fileinfo->path, &files, &subdirs);
 	while (files)
 	{
-		print_l_line(files->fileinfo, 1);
+		print_file(files->fileinfo, 1);
 		files = files->next;
 		// TODO free
 	}

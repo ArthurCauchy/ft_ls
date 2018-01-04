@@ -23,6 +23,5 @@ void	print_l_line(t_fileinfo *fileinfo, int short_name)
 	else
 		ft_miniprint("%r8d% ", &fileinfo->size);
 	ft_miniprint("%r0d% ", &fileinfo->mtime); // faire une fct de conversion (ou affichage direct) 
-	ft_miniprint("%r0s%\n",
-			(short_name) ? get_name_only(fileinfo->path) : fileinfo->path);
+	ft_putendl(short_name ? get_name_only(fileinfo->path) : fileinfo->path);
 }

@@ -81,6 +81,13 @@ void		print_errlist(t_errlist *errlist);
 void		print_dir(t_dirlist *dir);
 
 /*
+** output_file.c
+*/
+
+void		print_file(t_fileinfo *fileinfo, int short_name);
+void		print_default(t_fileinfo *fileinfo, int short_name);
+
+/*
 ** output_l.c
 */
 
