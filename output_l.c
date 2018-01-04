@@ -19,7 +19,7 @@ void	print_l_line(t_fileinfo *fileinfo, int short_name)
 	else
 		ft_miniprint("%r12d% ", &fileinfo->gid);
 	if (fileinfo->mode[0] == 'b' || fileinfo->mode[0] == 'c')
-		ft_miniprint("%r3d%, %r3d%", &fileinfo->major, &fileinfo->minor);
+		ft_miniprint("%r3d%, %r3d% ", &fileinfo->major, &fileinfo->minor);
 	else
 		ft_miniprint("%r8d% ", &fileinfo->size);
 	ft_miniprint("%r0d% ", &fileinfo->mtime); // faire une fct de conversion (ou affichage direct) 

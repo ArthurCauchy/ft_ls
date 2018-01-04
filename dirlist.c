@@ -75,3 +75,9 @@ t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 	}
 	return (dirlist);
 }
+
+void			dirlist_delete(t_dirlist *dirlist)
+{
+	fileinfo_delete(dirlist->fileinfo);
+	free(dirlist);
+}

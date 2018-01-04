@@ -100,3 +100,11 @@ t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 	}
 	return (new);
 }
+
+void					fileinfo_delete(t_fileinfo *fileinfo)
+{
+	free(fileinfo->path);
+	free(fileinfo->mode);
+	free(fileinfo->target_path);
+	free(fileinfo);
+}

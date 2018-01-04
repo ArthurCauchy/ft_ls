@@ -1,9 +1,9 @@
 - tester récursif qui passe plusieurs fois au meme endroit
-- tester filename='\0'
-- tester 2 filename identiques
+- tester 2 filename identiques mais fichiers differents
 - tester 2 foldername identique (afficher deux fois)
 - tester filename avec quotes
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
 - gerer les subfolders intelligement
 - -d > -R
 - vérifier qu'on output bien sur la bonne sortie les erreurs et messages
+- handle symlink (?) of /dev/stdin / out / err

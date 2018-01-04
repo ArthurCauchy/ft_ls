@@ -120,6 +120,7 @@ int			read_option(char *str);
 */
 
 t_fileinfo	*fileinfo_new(char *input, struct stat *file_info);
+void				fileinfo_delete(t_fileinfo *fileinfo);
 
 /*
 ** compare.c
@@ -136,6 +137,7 @@ int					cmp_tr(t_fileinfo *f1, t_fileinfo *f2);
 
 t_filelist  *filelist_new(char *input, struct stat *stat_info);
 t_filelist  **filelist_add(t_filelist **filelist, t_filelist *new);
+void				filelist_delte(t_filelist *filelist);
 
 /*
 ** dirlist.c
@@ -143,6 +145,7 @@ t_filelist  **filelist_add(t_filelist **filelist, t_filelist *new);
 
 t_dirlist 	*dirlist_new(char *input, struct stat *stat_info);
 t_dirlist		**dirlist_add(t_dirlist **dirlist, t_dirlist *new);
+void				dirlist_delete(t_dirlist *dirlist);
 
 /*
 ** errlist.c

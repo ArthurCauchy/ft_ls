@@ -73,3 +73,9 @@ t_filelist	**filelist_add(t_filelist **filelist, t_filelist *new)
 	}
 	return (filelist);
 }
+
+void 				filelist_delete(t_filelist *filelist)
+{
+	fileinfo_delete(filelist->fileinfo);
+	free(filelist);
+}
