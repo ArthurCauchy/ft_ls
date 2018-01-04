@@ -12,6 +12,8 @@ int		explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 		return (-1);
 	while ((file_tmp = readdir(dir)) != NULL)
 	{
+		if (file_tmp->d_name[0] == '.' && !option_check('a'))
+			continue;
 		tmp_name = get_filepath(dirpath, file_tmp->d_name);
 		if (lstat(tmp_name, &stat_info) < 0)
 			return (-1);
