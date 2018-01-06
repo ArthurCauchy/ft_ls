@@ -1,9 +1,11 @@
-- tester récursif qui passe plusieurs fois au meme endroit
 - tester 2 filename identiques mais fichiers differents
 - tester 2 foldername identique (afficher deux fois)
 - tester filename avec quotes
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
-- gerer les subfolders intelligement
 - -d > -R
 - vérifier qu'on output bien sur la bonne sortie les erreurs et messages
 - handle symlink (?) of /dev/stdin / out / err
+- si on affiche un seul dossier on affiche pas son nom
+- 'ls' = 'ls .'
+- TODO si parametre fini par un '/' ca pete
+- option 1 / affichage default

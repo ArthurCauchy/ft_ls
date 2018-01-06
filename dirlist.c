@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/18 16:32:53 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/06 15:45:47 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 
 void			dirlist_delete(t_dirlist *dirlist)
 {
+	if (!dirlist)
+		return ;
 	fileinfo_delete(dirlist->fileinfo);
 	free(dirlist);
 }

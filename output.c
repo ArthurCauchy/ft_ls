@@ -6,20 +6,39 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/14 18:15:20 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/06 17:52:33 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 /*
-** Prints the usage.
+** Prints the given error message. If none, just print 'error'.
 */
 
-void	print_error(void)
+void	print_error(char *errmsg)
 {
-	ft_putendl("error");
+	if (errmsg)
+		ft_putendl_fd(errmsg, 2);
+	else
+		ft_putendl_fd("error", 2);
 }
+
+/*
+** Fancy way to display error related to a specific file.
+*/
+
+void	print_file_error(char *filepath)
+{
+	ft_putstr_fd("ft_ls: unable to open directory '", 2);
+	ft_putstr_fd(filepath, 2);
+	ft_putstr_fd("': ", 2);
+	ft_putendl_fd(strerror(errno), 2);
+}
+
+/*
+** Prints the usage.
+*/
 
 void	print_usage(void)
 {
@@ -37,9 +56,9 @@ void	print_errlist(t_errlist *errlist)
 {
 	while (errlist)
 	{
-		ft_putstr(errlist->input);
-		ft_putstr(": ");
-		ft_putendl(errlist->errmsg);
+		ft_putstr_fd(errlist->input, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putendl_fd(errlist->errmsg, 2);
 		errlist = errlist->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/14 18:20:58 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/06 17:52:12 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	exit_error(void)
 {
-	print_error();
+	print_error(NULL);
 	exit(EXIT_FAILURE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:36:33 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/18 16:27:20 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/06 16:07:38 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,7 @@ int		main(int argc, char **argv)
 	errlist = NULL;
 	read_params(argv, &filelist, &dirlist, &errlist);
 	print_errlist(errlist);
-	t_filelist *cur = filelist;
-	while (cur)
-	{
-		print_file(cur->fileinfo, 0);
-		cur = cur->next;
-	}
-	t_dirlist *cur2 = dirlist;
-	while (cur2)
-	{
-		print_dir(cur2);
-		cur2 = cur2->next;
-	}
+	process_inputs(filelist, dirlist);
 	// et ensuite il faut tout free
 	return (EXIT_SUCCESS);
 }

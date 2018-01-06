@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/21 17:03:21 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/06 17:47:16 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,24 @@ typedef struct	s_errlist
 }								t_errlist;
 
 /*
+** process_inputs.c
+*/
+
+void		process_inputs(t_filelist *filelist, t_dirlist *dirlist);
+void		process_files(t_filelist *filelist, int short_name);
+
+/*
+** process_dirs.c
+*/
+
+void		process_dirs(t_dirlist *dirlist);
+
+/*
 ** output.c
 */
 
-void		print_error(void);
+void		print_error(char *errmsg);
+void		print_file_error(char *filepath);
 void		print_usage(void);
 void		print_illegal_option(char c);
 void		print_errlist(t_errlist *errlist);
@@ -78,7 +92,7 @@ void		print_errlist(t_errlist *errlist);
 ** output_dir.c
 */
 
-void		print_dir(t_dirlist *dir);
+void		print_dir(t_dirlist *dir, t_filelist *files);
 
 /*
 ** output_file.c
@@ -137,7 +151,7 @@ int					cmp_tr(t_fileinfo *f1, t_fileinfo *f2);
 
 t_filelist  *filelist_new(char *input, struct stat *stat_info);
 t_filelist  **filelist_add(t_filelist **filelist, t_filelist *new);
-void				filelist_delte(t_filelist *filelist);
+void				filelist_delete(t_filelist *filelist);
 
 /*
 ** dirlist.c

@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/18 16:24:45 by acauchy          ###   ########.fr        #
+#    Updated: 2018/01/06 14:24:19 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRC_NAME =	main.c \
 		filelist.c \
 		dirlist.c \
 		errlist.c \
+		process_inputs.c \
+		process_dirs.c \
 		output.c \
 		output_dir.c \
 		output_file.c \

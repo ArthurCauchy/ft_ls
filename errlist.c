@@ -28,7 +28,7 @@ static t_errlist	**errlist_add(t_errlist **errlist, t_errlist *new)
 	return (errlist);
 }
 
-void							register_err(char *input, t_errlist **errlist)
+void				register_err(char *input, t_errlist **errlist)
 {
 	char			*errmsg;
 	t_errlist *new;
