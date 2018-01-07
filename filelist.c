@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/06 16:26:26 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/07 18:53:30 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	filelist_insert(t_filelist **filelist,
 	prev = NULL;
 	while (cur)
 	{
-		if (cmp(new->fileinfo, cur->fileinfo) < 0)
+		if (cmp(new->fileinfo, cur->fileinfo) <= 0)
 		{
 			if (prev)
 				prev->next = new;

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/06 17:47:16 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/07 19:21:20 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,9 @@ void		print_dir(t_dirlist *dir, t_filelist *files);
 ** output_file.c
 */
 
-void		print_file(t_fileinfo *fileinfo, int short_name);
-void		print_default(t_fileinfo *fileinfo, int short_name);
+void		print_file(t_fileinfo *fileinfo, int short_name, int pos);
+void		print_default(t_fileinfo *fileinfo, int short_name, int pos);
+void		print_line(t_fileinfo *fileinfo, int short_name);
 
 /*
 ** output_l.c

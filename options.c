@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 10:01:37 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/18 13:23:26 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/07 18:55:07 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,9 @@ int		read_option(char *str)
 				|| str[i] == 'R'
 				|| str[i] == 'a'
 				|| str[i] == 'r'
-				|| str[i] == 't')
+				|| str[i] == 't'
+				|| str[i] == 'd'
+				|| str[i] == '1')
 			add_option(str[i]);
 		else
 		{
