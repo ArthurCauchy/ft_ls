@@ -2,7 +2,7 @@
 
 void	print_dir(t_dirlist *dir, t_filelist *files)
 {
-	ft_putchar('\n'); // des fois oui des fois non
+	ft_putchar('\n'); // SAUF SI PREMIER
 	ft_putstr(dir->fileinfo->path); // SAUF SI PREMIER ET DERNIER
 	ft_putendl(":");
 	// TODO print total
