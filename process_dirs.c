@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 14:23:24 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/08 14:54:44 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 	return (0);
 }
 
+static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist **files, int *total_size)
+{
+	*subdirs = NULL;
+	*files = NULL;
+	*total_size = 42;
+	if (explore_dir(dirlist->fileinfo->path, files, subdirs, total_size) == -1)
+		print_file_error(dirlist->fileinfo->path);
+	else
+		print_dir(dirlist, *files, *total_size);
+}
+
 void		process_dirs(t_dirlist *dirlist)
 {
 	t_dirlist	*prev;
@@ -62,13 +73,12 @@ void		process_dirs(t_dirlist *dirlist)
 	prev = NULL;
 	while (dirlist)
 	{
-		subdirs = NULL;
-		files = NULL;
-		total_size = 0;
-		if (explore_dir(dirlist->fileinfo->path, &files, &subdirs, &total_size) == -1)
-			print_file_error(dirlist->fileinfo->path);
-		else
-			print_dir(dirlist, files, total_size);
+		/*if (prev == NULL)
+		{
+			if (dirlist->next == NULL)
+				
+		}*/
+		process_one_dir(dirlist, &subdirs, &files, &total_size);
 		prev = dirlist;
 		dirlist = dirlist->next;
 		dirlist_delete(prev);
