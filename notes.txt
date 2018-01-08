@@ -6,7 +6,7 @@
 - si on affiche un seul dossier on affiche pas son nom
 - 'ls' = 'ls .'
 - TODO si parametre fini par un '/' ca pete
-
+- en fait total c'est le nombre de blocks plus ou moins
 
 BONUS A CE JOUR :
 -option -1: affichage en collone

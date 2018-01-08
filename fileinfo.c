@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 10:26:05 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/08 14:26:40 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 	new->uid = file_info->st_uid;
 	new->gid = file_info->st_gid;
 	new->size = file_info->st_size;
+	new->blocks = file_info->st_blocks;
 	new->mtime = file_info->st_mtimespec.tv_sec;
 	if (new->mode[0] == 'l')
 		new->target_path = symlink_target_path(new->path, new->size);

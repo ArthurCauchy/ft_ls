@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 11:08:52 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/08 14:23:24 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@ static int	is_not_dot(char *filename)
 	return (1);
 }
 
-static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
+static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, int *total_size)
 {
 	DIR				*dir;
 	struct dirent	*file_tmp;
 	struct stat		stat_info;
 	char			*tmp_name;
 
+	*total_size = 42;// TODO comprendre comment ca marche
 	dir = opendir(dirpath);
 	if (!dir)
 		return (-1);
@@ -56,16 +57,18 @@ void		process_dirs(t_dirlist *dirlist)
 	t_dirlist	*prev;
 	t_dirlist	*subdirs;
 	t_filelist	*files;
+	int			total_size;
 
 	prev = NULL;
 	while (dirlist)
 	{
 		subdirs = NULL;
 		files = NULL;
-		if (explore_dir(dirlist->fileinfo->path, &files, &subdirs) == -1)
+		total_size = 0;
+		if (explore_dir(dirlist->fileinfo->path, &files, &subdirs, &total_size) == -1)
 			print_file_error(dirlist->fileinfo->path);
 		else
-			print_dir(dirlist, files);
+			print_dir(dirlist, files, total_size);
 		prev = dirlist;
 		dirlist = dirlist->next;
 		dirlist_delete(prev);
