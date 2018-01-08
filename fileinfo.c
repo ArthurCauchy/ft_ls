@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/06 16:24:23 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 10:26:05 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static char		*mode_to_str(mode_t file_mode)
 	if (file_mode & S_ISGID)
 		str[6] = str[6] == 'x' ? 's' : 'S';
 	str[7] = file_mode & S_IROTH ? 'r' : '-';
-	str[8] = file_mode & S_IWOTH ? 'w' : '-';										
+	str[8] = file_mode & S_IWOTH ? 'w' : '-';
 	str[9] = file_mode & S_IXOTH ? 'x' : '-';
 	if (file_mode & S_ISVTX)
 		str[9] = str[9] == 'x' ? 't' : 'T';
@@ -78,7 +78,7 @@ static char		*symlink_target_path(char *link_path, off_t file_size)
 
 t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 {
-	t_fileinfo  *new;
+	t_fileinfo	*new;
 
 	if (!(new = (t_fileinfo*)malloc(sizeof(t_fileinfo))))
 		return (NULL);
@@ -88,7 +88,7 @@ t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 	new->uid = file_info->st_uid;
 	new->gid = file_info->st_gid;
 	new->size = file_info->st_size;
-	new->mtime = file_info->st_mtim.tv_sec;
+	new->mtime = file_info->st_mtimespec.tv_sec;
 	if (new->mode[0] == 'l')
 		new->target_path = symlink_target_path(new->path, new->size);
 	else
@@ -101,7 +101,7 @@ t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 	return (new);
 }
 
-void					fileinfo_delete(t_fileinfo *fileinfo)
+void			fileinfo_delete(t_fileinfo *fileinfo)
 {
 	free(fileinfo->path);
 	free(fileinfo->mode);

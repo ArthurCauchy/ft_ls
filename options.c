@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 10:01:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/07 18:55:07 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:40:51 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** return 1 : yes, return 0 : no
 */
 
-int		option_check(char opt_char)
+int			option_check(char opt_char)
 {
 	int	i;
 
@@ -46,13 +46,26 @@ static void	add_option(char opt_char)
 		g_options[opt_count++] = opt_char;
 }
 
+static int	is_valid_option(char opt_char)
+{
+	if (opt_char == 'l'
+			|| opt_char == 'R'
+			|| opt_char == 'a'
+			|| opt_char == 'r'
+			|| opt_char == 't'
+			|| opt_char == 'd'
+			|| opt_char == '1')
+		return (1);
+	return (0);
+}
+
 /*
 ** WARNING: 'options' parameter MUST be initialized
 ** as a NTCTS of min size of 6 (\0 included)
 ** Return: 0 if str isn't an option, 1 if it is
 */
 
-int		read_option(char *str)
+int			read_option(char *str)
 {
 	int		i;
 
@@ -64,13 +77,7 @@ int		read_option(char *str)
 		return (0);
 	while (str[i])
 	{
-		if (str[i] == 'l'
-				|| str[i] == 'R'
-				|| str[i] == 'a'
-				|| str[i] == 'r'
-				|| str[i] == 't'
-				|| str[i] == 'd'
-				|| str[i] == '1')
+		if (is_valid_option(str[i]))
 			add_option(str[i]);
 		else
 		{

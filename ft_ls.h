@@ -6,16 +6,19 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/07 19:21:20 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 10:34:05 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_LS_H
 # define FT_LS_H
 
+#ifndef __APPLE__
+# include <sys/sysmacros.h>
+#endif
+
 # include <sys/stat.h>
 # include <sys/types.h>
-# include <sys/sysmacros.h> // file not found on DARWIN
 # include <pwd.h>
 # include <grp.h>
 # include <errno.h>

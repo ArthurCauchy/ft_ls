@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/07 18:53:30 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:24:18 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ t_filelist	**filelist_add(t_filelist **filelist, t_filelist *new)
 	return (filelist);
 }
 
-void 				filelist_delete(t_filelist *filelist)
+void		filelist_delete(t_filelist *filelist)
 {
 	fileinfo_delete(filelist->fileinfo);
 	free(filelist);

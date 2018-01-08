@@ -1,13 +1,11 @@
 - tester 2 filename identiques mais fichiers differents
 - tester filename avec quotes
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
-- -d > -R
 - vérifier qu'on output bien sur la bonne sortie les erreurs et messages
 - handle symlink (?) of /dev/stdin / out / err
 - si on affiche un seul dossier on affiche pas son nom
 - 'ls' = 'ls .'
 - TODO si parametre fini par un '/' ca pete
-- TODO arreter de lire les options apres un -- ou un nom de dossier OU PAS WTF LS IS DOING
 
 
 BONUS A CE JOUR :

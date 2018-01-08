@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/07 18:53:41 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:34:14 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_dirlist	*dirlist_new(char *input,
 	return (new);
 }
 
-void				dirlist_insert(t_dirlist **dirlist,
+void		dirlist_insert(t_dirlist **dirlist,
 		t_dirlist *new,
 		int (*cmp)(t_fileinfo*, t_fileinfo*))
 {
@@ -76,7 +76,7 @@ t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 	return (dirlist);
 }
 
-void			dirlist_delete(t_dirlist *dirlist)
+void		dirlist_delete(t_dirlist *dirlist)
 {
 	if (!dirlist)
 		return ;

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/06 17:52:12 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:00:54 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	exit_error(void)
 
 char	*get_name_only(char *path)
 {
-	char *name_start;
+	char	*name_start;
 	int		tmp;
 
 	name_start = path;
@@ -42,7 +42,7 @@ char	*get_name_only(char *path)
 char	*get_filepath(char *dirpath, char *filename)
 {
 	static char	filepath[MAX_PATH_SIZE];
-	size_t			i;
+	size_t		i;
 
 	i = 0;
 	while (*dirpath)
@@ -60,5 +60,5 @@ char	*get_filepath(char *dirpath, char *filename)
 		++i;
 	}
 	filepath[i] = '\0';
-	return ft_strdup(filepath);
+	return (ft_strdup(filepath));
 }

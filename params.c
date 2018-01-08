@@ -6,17 +6,18 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:12:00 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/07 19:41:10 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:14:53 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int				load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
+int		load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
 {
 	struct stat	stat_info;
 
-	if ((option_check('l') && lstat(input, &stat_info) < 0) || stat(input, &stat_info) < 0)
+	if ((option_check('l') && lstat(input, &stat_info) < 0)
+			|| (stat(input, &stat_info) < 0))
 		return (-1);
 	if (S_ISDIR(stat_info.st_mode) && !option_check('d'))
 		dirlist_add(dirlist, dirlist_new(ft_strdup(input), &stat_info));
@@ -25,7 +26,8 @@ int				load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
 	return (0);
 }
 
-void		read_params(char **argv, t_filelist **filelist, t_dirlist **dirlist, t_errlist **errlist)
+void	read_params(char **argv, t_filelist **filelist,
+		t_dirlist **dirlist, t_errlist **errlist)
 {
 	int	i;
 	int	is_opt;

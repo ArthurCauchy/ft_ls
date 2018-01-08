@@ -1,23 +1,36 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   process_dirs.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
+/*   Updated: 2018/01/08 11:08:52 by acauchy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 /*
 ** Returns false if the filename specified is either '.' or '..'
-**/
+*/
 
 static int	is_not_dot(char *filename)
 {
 	if ((filename[0] == '.' && filename[1] == '\0')
-			|| (filename[0] == '.' && filename[1] == '.' && filename[2] == '\0'))
+			|| (filename[0] == '.' && filename[1] == '.'
+				&& filename[2] == '\0'))
 		return (0);
 	return (1);
 }
 
 static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 {
-	DIR						*dir;
+	DIR				*dir;
 	struct dirent	*file_tmp;
 	struct stat		stat_info;
-	char					*tmp_name;
+	char			*tmp_name;
 
 	dir = opendir(dirpath);
 	if (!dir)
@@ -30,7 +43,8 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 		if (lstat(tmp_name, &stat_info) < 0)
 			return (-1);
 		filelist_add(files, filelist_new(tmp_name, &stat_info));
-		if (option_check('R') && S_ISDIR(stat_info.st_mode) && is_not_dot(file_tmp->d_name))
+		if (option_check('R') && S_ISDIR(stat_info.st_mode)
+				&& is_not_dot(file_tmp->d_name))
 			dirlist_add(subdirs, dirlist_new(ft_strdup(tmp_name), &stat_info));
 	}
 	closedir(dir);

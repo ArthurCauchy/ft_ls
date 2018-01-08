@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errlist.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/01/08 10:56:16 by acauchy           #+#    #+#             */
+/*   Updated: 2018/01/08 10:56:17 by acauchy          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_ls.h"
 
 static t_errlist	*errlist_new(char *input, char *errmsg)
@@ -30,9 +42,11 @@ static t_errlist	**errlist_add(t_errlist **errlist, t_errlist *new)
 
 void				register_err(char *input, t_errlist **errlist)
 {
-	char			*errmsg;
-	t_errlist *new;
+	char		*errmsg;
+	t_errlist	*new;
 
+	errmsg = NULL;
+	new = NULL;
 	errmsg = ft_strdup(strerror(errno));
 	if (!errmsg || !(new = errlist_new(input, errmsg)))
 		exit_error();

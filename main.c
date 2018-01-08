@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:36:33 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/06 16:07:38 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/08 11:24:25 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ int		main(int argc, char **argv)
 	read_params(argv, &filelist, &dirlist, &errlist);
 	print_errlist(errlist);
 	process_inputs(filelist, dirlist);
-	// et ensuite il faut tout free
 	return (EXIT_SUCCESS);
 }
