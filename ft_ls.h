@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 14:26:36 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/08 20:56:54 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void		print_errlist(t_errlist *errlist);
 ** output_dir.c
 */
 
-void		print_dir(t_dirlist *dir, t_filelist *files, int total);
+void		print_dir(t_dirlist *dir, t_filelist *files, int is_first, int total);
 
 /*
 ** output_file.c

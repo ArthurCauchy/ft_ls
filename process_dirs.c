@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 14:54:44 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/08 21:11:07 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,17 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 	return (0);
 }
 
-static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist **files, int *total_size)
+static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist **files, int is_first)
 {
+	int	total_size;
+
+	total_size = 42;
 	*subdirs = NULL;
 	*files = NULL;
-	*total_size = 42;
-	if (explore_dir(dirlist->fileinfo->path, files, subdirs, total_size) == -1)
+	if (explore_dir(dirlist->fileinfo->path, files, subdirs, &total_size) == -1)
 		print_file_error(dirlist->fileinfo->path);
 	else
-		print_dir(dirlist, *files, *total_size);
+		print_dir(dirlist, *files, is_first, total_size);
 }
 
 void		process_dirs(t_dirlist *dirlist)
@@ -68,17 +70,19 @@ void		process_dirs(t_dirlist *dirlist)
 	t_dirlist	*prev;
 	t_dirlist	*subdirs;
 	t_filelist	*files;
-	int			total_size;
 
 	prev = NULL;
 	while (dirlist)
 	{
-		/*if (prev == NULL)
+		if (prev == NULL)
 		{
 			if (dirlist->next == NULL)
-				
-		}*/
-		process_one_dir(dirlist, &subdirs, &files, &total_size);
+				process_one_dir(dirlist, &subdirs, &files, 2);
+			else
+				process_one_dir(dirlist, &subdirs, &files, 1);
+		}
+		else
+			process_one_dir(dirlist, &subdirs, &files, 0);
 		prev = dirlist;
 		dirlist = dirlist->next;
 		dirlist_delete(prev);
