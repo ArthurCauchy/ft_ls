@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/06 17:52:33 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/09 14:21:00 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_file_error(char *filepath)
 
 void	print_usage(void)
 {
-	ft_putendl("usage: ft_ls [-lRart] [file...]");
+	ft_putendl("usage: ft_ls [-lRart1d] [file...]");
 }
 
 void	print_illegal_option(char c)
@@ -56,9 +56,9 @@ void	print_errlist(t_errlist *errlist)
 {
 	while (errlist)
 	{
-		ft_putstr_fd(errlist->input, 2);
-		ft_putstr_fd(": ", 2);
-		ft_putendl_fd(errlist->errmsg, 2);
+		ft_miniprint("ft_ls: cannot access '%r0s%': %r0s%\n",
+				errlist->input,
+				errlist->errmsg); //NOOOO. a print sur fd 2
 		errlist = errlist->next;
 	}
 }

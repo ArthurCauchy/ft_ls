@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 21:21:46 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/09 14:48:53 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_dir(t_dirlist *dir, t_filelist *files, int is_first, int total)
 {
 	if (!is_first)
 		ft_putchar('\n');
-	if (is_first < 2)
+	if (is_first < 2 || option_check('R'))
 	{
 		ft_putstr(dir->fileinfo->path);
 		ft_putendl(":");

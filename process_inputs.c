@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:59 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 10:51:02 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/09 14:40:46 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	process_inputs(t_filelist *filelist, t_dirlist *dirlist)
 ** 2) short name format ? 1 = yes, 0 = no
 **
 ** pos will be used to know if it's the first, middle or last element
-** -1 = first, 0 = middle, 1 = last
+** -1 = first, 0 = middle, 1 = last, 2 = first and last (alone)
 */
 
 void	process_files(t_filelist *filelist, int short_name)
@@ -39,10 +39,15 @@ void	process_files(t_filelist *filelist, int short_name)
 	{
 		prev = filelist;
 		filelist = filelist->next;
-		if (filelist)
-			print_file(prev->fileinfo, short_name, pos);
+		if (!filelist)
+		{
+			if (pos == -1)
+				print_file(prev->fileinfo, short_name, 2);
+			else
+				print_file(prev->fileinfo, short_name, 1);
+		}
 		else
-			print_file(prev->fileinfo, short_name, 1);
+			print_file(prev->fileinfo, short_name, pos);
 		filelist_delete(prev);
 		pos = 0;
 	}

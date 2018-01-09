@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:12:00 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 11:14:53 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/09 14:00:02 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	read_params(char **argv, t_filelist **filelist,
 				register_err(argv[i], errlist);
 		++i;
 	}
-	if (!*filelist && !*dirlist)
+	if (!*filelist && !*dirlist && !*errlist)
 	{
 		if (load_file(".", filelist, dirlist) == -1)
 			register_err(".", errlist);

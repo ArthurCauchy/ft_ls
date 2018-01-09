@@ -5,6 +5,8 @@
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
 - en fait total c'est le nombre de blocks plus ou moins
 - A VERIFIER: fichier plus recent ou plus vieux de 6 mois : afficher annee
+- TODO faire un ft_miniprint_fd
+- TODO ceck les fuites memoire de miniprint
 
 BONUS A CE JOUR :
 -option -1: affichage en collone

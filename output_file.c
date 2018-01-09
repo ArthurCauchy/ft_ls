@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 10:55:54 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/09 14:34:30 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,13 @@ void	print_file(t_fileinfo *fileinfo, int short_name, int pos)
 
 void	print_default(t_fileinfo *fileinfo, int short_name, int pos)
 {
-	if (pos != -1)
+	if (pos != -1 && pos != 2)
 		ft_putchar(' ');
 	if (short_name)
 		ft_putstr(get_name_only(fileinfo->path));
 	else
 		ft_putstr(fileinfo->path);
-	if (pos == 1)
+	if (pos > 0)
 		ft_putchar('\n');
 }
 
