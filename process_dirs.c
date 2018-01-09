@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 21:11:07 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/09 17:21:54 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 	char			*tmp_name;
 
 	*total_size = 42;// TODO comprendre comment ca marche
-	dir = opendir(dirpath);
+	if (dirpath[0] != '\0')
+		dir = opendir(dirpath);
+	else
+		dir = opendir("/");
 	if (!dir)
 		return (-1);
 	while ((file_tmp = readdir(dir)) != NULL)
@@ -65,7 +68,7 @@ static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist 
 		print_dir(dirlist, *files, is_first, total_size);
 }
 
-void		process_dirs(t_dirlist *dirlist)
+void		process_dirs(t_dirlist *dirlist, t_filelist *filelist, t_errlist *errlist)
 {
 	t_dirlist	*prev;
 	t_dirlist	*subdirs;
@@ -76,7 +79,7 @@ void		process_dirs(t_dirlist *dirlist)
 	{
 		if (prev == NULL)
 		{
-			if (dirlist->next == NULL)
+			if (!filelist && !errlist && dirlist->next == NULL)
 				process_one_dir(dirlist, &subdirs, &files, 2);
 			else
 				process_one_dir(dirlist, &subdirs, &files, 1);
@@ -86,6 +89,6 @@ void		process_dirs(t_dirlist *dirlist)
 		prev = dirlist;
 		dirlist = dirlist->next;
 		dirlist_delete(prev);
-		process_dirs(subdirs);
+		process_dirs(subdirs, filelist, errlist);
 	}
 }

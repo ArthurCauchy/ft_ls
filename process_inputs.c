@@ -6,16 +6,16 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:59 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 14:40:46 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/09 17:22:33 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	process_inputs(t_filelist *filelist, t_dirlist *dirlist)
+void	process_inputs(t_filelist *filelist, t_dirlist *dirlist, t_errlist *errlist)
 {
 	process_files(filelist, 0);
-	process_dirs(dirlist);
+	process_dirs(dirlist, filelist, errlist);
 }
 
 /*

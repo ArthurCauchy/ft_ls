@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 20:56:54 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/09 17:20:35 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ typedef struct	s_errlist
 ** process_inputs.c
 */
 
-void		process_inputs(t_filelist *filelist, t_dirlist *dirlist);
+void		process_inputs(t_filelist *filelist, t_dirlist *dirlist, t_errlist *errlist);
 void		process_files(t_filelist *filelist, int short_name);
 
 /*
 ** process_dirs.c
 */
 
-void		process_dirs(t_dirlist *dirlist);
+void		process_dirs(t_dirlist *dirlist, t_filelist *filelist, t_errlist *errlist);
 
 /*
 ** output.c
