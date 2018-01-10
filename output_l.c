@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 11:20:17 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/10 12:08:25 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,6 @@ void	print_l_line(t_fileinfo *fileinfo, int short_name)
 		ft_miniprint("%r3d%, %r3d% ", &fileinfo->major, &fileinfo->minor);
 	else
 		ft_miniprint("%r8d% ", &fileinfo->size);
-	ft_miniprint("%r0d% ", &fileinfo->mtime);
+	ft_miniprint("%r0s% ", time_to_str(fileinfo->mtime));
 	ft_putendl(short_name ? get_name_only(fileinfo->path) : fileinfo->path);
 }

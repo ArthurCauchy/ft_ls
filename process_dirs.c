@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 17:21:54 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/10 12:08:05 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 	char			*tmp_name;
 
 	*total_size = 42;// TODO comprendre comment ca marche
-	if (dirpath[0] != '\0')
-		dir = opendir(dirpath);
-	else
-		dir = opendir("/");
+	dir = opendir(dirpath);
 	if (!dir)
 		return (-1);
 	while ((file_tmp = readdir(dir)) != NULL)

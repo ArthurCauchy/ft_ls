@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 16:46:29 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/10 12:29:09 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,30 @@ char	*get_filepath(char *dirpath, char *filename)
 	}
 	filepath[i] = '\0';
 	return (ft_strdup(filepath));
+}
+
+char	*time_to_str(time_t file_time)
+{
+	time_t	current_time;
+	char	*ctime_str;
+	char	*final;
+	int		i;
+	int		j;
+
+	current_time = time(NULL);
+	ctime_str = ctime(&file_time);
+	if (file_time > current_time - 2629800 && file_time < current_time + 2629800)
+		final = ft_strsub(ctime_str, 4, 12);
+	else
+	{
+		i = 4;
+		j = 0;
+		final = ft_strnew(12);
+		while (i < 11)
+			final[j++] = ctime_str[i++];
+		i = 19;
+		while (i < 24)
+			final[j++] = ctime_str[i++];
+	}
+	return (final);
 }

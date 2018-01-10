@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:12:00 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 17:07:48 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/10 12:03:19 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ static char	*delete_dir_slash(char *input)
 	size_t	i;
 
 	new = ft_strdup(input);
-	i = 0;
-	while (new[i] && new[i] != '/')
-		++i;
-	new[i] = '\0';
+	i = ft_strlen(new) - 1;
+	while (i > 0 && new[i] == '/')
+		--i;
+	new[i + 1] = '\0';
 	return (new);
 }
 

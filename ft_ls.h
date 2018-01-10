@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 17:20:35 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/10 11:20:57 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,7 @@ void		print_l_line(t_fileinfo *fileinfo, int short_name);
 void		exit_error(void);
 char		*get_name_only(char *path);
 char		*get_filepath(char *dirpath, char *filename);
+char		*time_to_str(time_t time);
 
 /*
 ** params.c

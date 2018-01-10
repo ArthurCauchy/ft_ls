@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2017/12/21 16:08:35 by acauchy          ###   ########.fr        #
+#    Updated: 2018/01/10 11:53:02 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRC_NAME = ft_memset.c \
 		 ft_strnequ.c \
 		 ft_strsub.c \
 		 ft_strjoin.c \
+		 ft_strjoin_free.c \
 		 ft_strtrim.c \
 		 ft_strsplit.c \
 		 ft_itoa.c \
