@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/01/06 14:24:19 by arthur           ###   ########.fr        #
+#    Updated: 2018/01/11 17:16:53 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,7 @@ SRC_NAME =	main.c \
 		output_dir.c \
 		output_file.c \
 		output_l.c \
+		lprint.c \
 		utils.c
 
 OBJ_PATH = objs

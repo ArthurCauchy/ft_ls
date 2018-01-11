@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/10 11:20:57 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:51:26 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,17 @@ typedef struct	s_errlist
 	struct s_errlist	*next;
 }								t_errlist;
 
+typedef struct	s_lprint
+{
+	char			*mode;
+	char			*nlink;
+	char			*uid;
+	char			*gid;
+	char			*size;
+	char			*date;
+	char			*filename;
+}				t_lprint;
+
 /*
 ** process_inputs.c
 */
@@ -110,7 +121,15 @@ void		print_line(t_fileinfo *fileinfo, int short_name);
 ** output_l.c
 */
 
-void		print_l_line(t_fileinfo *fileinfo, int short_name);
+void		print_l_line(t_fileinfo *fileinfo, int short_name, int pos);
+
+/*
+** lprint.c
+*/
+
+void        lprint_delete(void *lprint, size_t size);
+t_lprint	*lprint_new(t_fileinfo *fileinfo, int short_name);
+void		lprint_print(t_list *elem);
 
 /*
 ** utils.c

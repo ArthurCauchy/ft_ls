@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/10 12:08:25 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/11 18:33:40 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,29 @@
 ** params :
 ** 1) fileinfo to print
 ** 2) short name format ? 1 = yes, 0 = no
+**
+** NOTE: This function do not print anything until pos is equal to 2 (last)
 */
 
-void	print_l_line(t_fileinfo *fileinfo, int short_name)
+void	print_l_line(t_fileinfo *fileinfo, int short_name, int pos)
 {
-	ft_miniprint("%r0s% ", fileinfo->mode);
-	ft_miniprint("%r4d% ", &fileinfo->nlink);
-	if (getpwuid(fileinfo->uid))
-		ft_miniprint("%r12s% ", getpwuid(fileinfo->uid)->pw_name);
+	static int		*col_sizes;
+	static t_list	*lprintlist = NULL;
+	t_lprint		*lp_new;
+
+	if (pos == 1 || pos == 2)
+	{
+		ft_lstiter(lprintlist, &lprint_print);
+		ft_lstdel(&lprintlist, &lprint_delete);
+		free(col_sizes);
+		col_sizes = NULL;
+	}
 	else
-		ft_miniprint("%r12d% ", &fileinfo->uid);
-	if (getgrgid(fileinfo->gid))
-		ft_miniprint("%r12s% ", getgrgid(fileinfo->gid)->gr_name);
-	else
-		ft_miniprint("%r12d% ", &fileinfo->gid);
-	if (fileinfo->mode[0] == 'b' || fileinfo->mode[0] == 'c')
-		ft_miniprint("%r3d%, %r3d% ", &fileinfo->major, &fileinfo->minor);
-	else
-		ft_miniprint("%r8d% ", &fileinfo->size);
-	ft_miniprint("%r0s% ", time_to_str(fileinfo->mtime));
-	ft_putendl(short_name ? get_name_only(fileinfo->path) : fileinfo->path);
+	{
+		if (!col_sizes)
+			col_sizes = ft_memalloc(4 * sizeof(int));
+		lp_new = lprint_new(fileinfo, short_name);
+		ft_lstpushback(&lprintlist, ft_lstnew((void*)lp_new, sizeof(t_lprint)));
+		//update_cols(col_sizes, lp_new);
+	}
 }

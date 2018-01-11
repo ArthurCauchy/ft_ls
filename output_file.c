@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 14:34:30 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/11 17:34:45 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 void	print_file(t_fileinfo *fileinfo, int short_name, int pos)
 {
 	if (option_check('l'))
-		print_l_line(fileinfo, short_name);
+		print_l_line(fileinfo, short_name, pos);
 	else if (option_check('1'))
 		print_line(fileinfo, short_name);
 	else
