@@ -6,6 +6,7 @@
 - TODO faire un ft_miniprint_fd
 - TODO ceck les fuites memoire de miniprint
 - tester fsanitize
+- TODO afficher les liens symboliques apres le nom en -l !!!
 
 BONUS A CE JOUR :
 -option -1: affichage en collone
