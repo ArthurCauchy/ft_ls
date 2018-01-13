@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/10 12:29:09 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/13 14:54:00 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ char	*get_filepath(char *dirpath, char *filename)
 		++dirpath;
 		++i;
 	}
-	filepath[i] = '/';
-	++i;
+	if (filepath[i - 1] != '/')
+		filepath[i++] = '/';
 	while (*filename)
 	{
 		filepath[i] = *filename;

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/10 12:08:05 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/13 14:52:17 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 		if (file_tmp->d_name[0] == '.' && !option_check('a'))
 			continue;
 		tmp_name = get_filepath(dirpath, file_tmp->d_name);
+		//printf("\n\n%s\n\n", tmp_name);
 		if (lstat(tmp_name, &stat_info) < 0)
 			return (-1);
 		filelist_add(files, filelist_new(tmp_name, &stat_info));

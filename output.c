@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 14:21:00 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/13 12:14:22 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	print_error(char *errmsg)
 
 void	print_file_error(char *filepath)
 {
-	ft_putstr_fd("ft_ls: unable to open directory '", 2);
+	ft_putstr_fd("ft_ls: ", 2);
 	ft_putstr_fd(filepath, 2);
-	ft_putstr_fd("': ", 2);
+	ft_putstr_fd(": ", 2);
 	ft_putendl_fd(strerror(errno), 2);
 }
 
@@ -42,23 +42,25 @@ void	print_file_error(char *filepath)
 
 void	print_usage(void)
 {
-	ft_putendl("usage: ft_ls [-lRart1d] [file...]");
+	ft_putendl_fd("usage: ft_ls [-lRart1d] [file...]", 2);
 }
 
 void	print_illegal_option(char c)
 {
-	ft_putstr("ft_ls: illegal option -- ");
-	ft_putchar(c);
-	ft_putchar('\n');
+	ft_putstr_fd("ft_ls: illegal option -- ", 2);
+	ft_putchar_fd(c, 2);
+	ft_putchar_fd('\n', 2);
 }
 
 void	print_errlist(t_errlist *errlist)
 {
 	while (errlist)
 	{
-		ft_miniprint("ft_ls: cannot access '%r0s%': %r0s%\n",
-				errlist->input,
-				errlist->errmsg); //NOOOO. a print sur fd 2
+		ft_putstr_fd("ft_ls: ", 2);
+		ft_putstr_fd(errlist->input, 2);
+		ft_putstr_fd(": ", 2);
+		ft_putstr_fd(errlist->errmsg, 2);
+		ft_putchar_fd('\n', 2);
 		errlist = errlist->next;
 	}
 }

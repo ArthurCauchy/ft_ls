@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:12:00 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/10 12:03:19 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/13 13:50:02 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,7 @@ int			load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
 			|| (stat(input, &stat_info) < 0))
 		return (-1);
 	if (S_ISDIR(stat_info.st_mode) && !option_check('d'))
-	{
-
 		dirlist_add(dirlist, dirlist_new(delete_dir_slash(input), &stat_info));
-	}
 	else
 		filelist_add(filelist, filelist_new(ft_strdup(input), &stat_info));
 	return (0);
