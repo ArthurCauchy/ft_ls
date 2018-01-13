@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 12:14:32 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:17:14 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,25 @@ static void	apply_col_sizes(int *col_sizes, t_list *lplist)
 
 void	print_l_line(t_fileinfo *fileinfo, int short_name, int pos)
 {
-	static int		*col_sizes;
-	static t_list	*lprintlist = NULL;
-	t_lprint		*lp_new;
+	static int				*col_sizes;
+	static unsigned	long	total = 0;
+	static t_list			*lprintlist = NULL;
+	t_lprint				*lp_new;
 
 	if (!col_sizes)
 		col_sizes = ft_memalloc(4 * sizeof(int));
+	total += fileinfo->blocks;
 	lp_new = lprint_new(fileinfo, short_name);
 	ft_lstpushback(&lprintlist, ft_lstnew((void*)lp_new, sizeof(t_lprint)));
 	read_col_sizes(col_sizes, lp_new);
 	if (pos == 1 || pos == 2)
 	{
+		ft_miniprint("total %l0d%\n", &total);
 		apply_col_sizes(col_sizes, lprintlist);
 		ft_lstiter(lprintlist, &lprint_print);
 		ft_lstdel(&lprintlist, &lprint_delete);
 		free(col_sizes);
 		col_sizes = NULL;
+		total = 0;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 14:31:39 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:09:50 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 **    0 = no, 1 = yes, 2 = yes and the only one
 */
 
-void	print_dir(t_dirlist *dir, t_filelist *files, int is_first, int total)
+void	print_dir(t_dirlist *dir, t_filelist *files, int is_first)
 {
 	if (!is_first)
 		ft_putchar('\n');
@@ -28,12 +28,6 @@ void	print_dir(t_dirlist *dir, t_filelist *files, int is_first, int total)
 	{
 		ft_putstr(dir->fileinfo->path);
 		ft_putendl(":");
-	}
-	if (option_check('l'))
-	{
-		ft_putstr("total ");
-		ft_putnbr(total);
-		ft_putchar('\n');
 	}
 	process_files(files, 1);
 }

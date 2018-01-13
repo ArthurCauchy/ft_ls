@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/11 17:51:26 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/13 16:12:21 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,17 @@ extern char			g_options[64];;
 
 typedef struct	s_fileinfo
 {
-	char	*path;
-	char	*mode;
-	nlink_t	nlink;
-	uid_t	uid;
-	gid_t	gid;
-	off_t	size;
-	quad_t	blocks;
-	time_t	mtime;
-	char	*target_path;
-	dev_t	major;
-	dev_t	minor;
+	char		*path;
+	char		*mode;
+	nlink_t		nlink;
+	uid_t		uid;
+	gid_t		gid;
+	off_t		size;
+	unsigned	blocks;
+	time_t		mtime;
+	char		*target_path;
+	dev_t		major;
+	dev_t		minor;
 }				t_fileinfo;
 
 typedef struct	s_filelist
@@ -107,7 +107,7 @@ void		print_errlist(t_errlist *errlist);
 ** output_dir.c
 */
 
-void		print_dir(t_dirlist *dir, t_filelist *files, int is_first, int total);
+void		print_dir(t_dirlist *dir, t_filelist *files, int is_first);
 
 /*
 ** output_file.c

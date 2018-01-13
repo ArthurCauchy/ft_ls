@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 14:52:17 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/13 16:16:32 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ static int	is_not_dot(char *filename)
 	return (1);
 }
 
-static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, int *total_size)
+static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 {
 	DIR				*dir;
 	struct dirent	*file_tmp;
 	struct stat		stat_info;
 	char			*tmp_name;
 
-	*total_size = 42;// TODO comprendre comment ca marche
 	dir = opendir(dirpath);
 	if (!dir)
 		return (-1);
@@ -41,7 +40,6 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 		if (file_tmp->d_name[0] == '.' && !option_check('a'))
 			continue;
 		tmp_name = get_filepath(dirpath, file_tmp->d_name);
-		//printf("\n\n%s\n\n", tmp_name);
 		if (lstat(tmp_name, &stat_info) < 0)
 			return (-1);
 		filelist_add(files, filelist_new(tmp_name, &stat_info));
@@ -55,15 +53,12 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs, i
 
 static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist **files, int is_first)
 {
-	int	total_size;
-
-	total_size = 42;
 	*subdirs = NULL;
 	*files = NULL;
-	if (explore_dir(dirlist->fileinfo->path, files, subdirs, &total_size) == -1)
+	if (explore_dir(dirlist->fileinfo->path, files, subdirs) == -1)
 		print_file_error(dirlist->fileinfo->path);
 	else
-		print_dir(dirlist, *files, is_first, total_size);
+		print_dir(dirlist, *files, is_first);
 }
 
 void		process_dirs(t_dirlist *dirlist, t_filelist *filelist, t_errlist *errlist)
