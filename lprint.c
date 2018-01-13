@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/12 10:55:46 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/12 13:33:09 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,22 @@ static char	*major_minor_to_str(t_fileinfo *fileinfo)
 	return (final);
 }
 
+static char *name_and_syml_to_str(t_fileinfo *fileinfo, int short_name)
+{
+	char	*final;
+
+	if (short_name)
+		final = ft_strdup(get_name_only(fileinfo->path));
+	else
+		final = ft_strdup(fileinfo->path);
+	if (fileinfo->target_path)
+	{
+		final = ft_strjoin_free(final, ft_strdup(" -> "));
+		final = ft_strjoin_free(final, ft_strdup(fileinfo->target_path));
+	}
+	return (final);
+}
+
 t_lprint	*lprint_new(t_fileinfo *fileinfo, int short_name)
 {
 	t_lprint	*new;
@@ -59,7 +75,7 @@ t_lprint	*lprint_new(t_fileinfo *fileinfo, int short_name)
 	else
 		new->size = ft_lltoa(fileinfo->size);
 	new->date = time_to_str(fileinfo->mtime);
-	new->filename = short_name ? ft_strdup(get_name_only(fileinfo->path)) : ft_strdup(fileinfo->path);
+	new->filename = name_and_syml_to_str(fileinfo, short_name);
 	return (new);
 }
 

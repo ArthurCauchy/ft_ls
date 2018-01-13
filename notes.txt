@@ -1,12 +1,11 @@
 - tester filename avec quotes
 - vérifier qu'on output bien sur la bonne sortie les erreurs et messages
-- handle symlink (?) of /dev/stdin / out / err
 - ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
 - en fait total c'est le nombre de blocks plus ou moins
 - TODO faire un ft_miniprint_fd
-- TODO ceck les fuites memoire de miniprint
+- TODO check les fuites memoire de miniprint
 - tester fsanitize
-- TODO afficher les liens symboliques apres le nom en -l !!!
+- quand il y a un guillemet autour du nom de fichier affiche l'affichage des autres noms se decale d'un espace a droite
 
 BONUS A CE JOUR :
 -option -1: affichage en collone
