@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 10:01:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 11:40:51 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 13:55:25 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static int	is_valid_option(char opt_char)
 			|| opt_char == 'a'
 			|| opt_char == 'r'
 			|| opt_char == 't'
+			|| opt_char == 'S'
 			|| opt_char == 'd'
 			|| opt_char == '1')
 		return (1);

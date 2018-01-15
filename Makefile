@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/01/11 17:16:53 by arthur           ###   ########.fr        #
+#    Updated: 2018/01/15 13:40:22 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC_NAME =	main.c \
 		options.c \
 		fileinfo.c \
 		compare.c \
+		compare2.c \
 		filelist.c \
 		dirlist.c \
 		errlist.c \

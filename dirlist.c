@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 11:34:14 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 14:42:44 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,11 @@ t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 		*dirlist = new;
 	else
 	{
-		if (option_check('t') && option_check('r'))
+		if (option_check('S') && option_check('r'))
+			dirlist_insert(dirlist, new, &cmp_Sr);
+		else if (option_check('S'))
+			dirlist_insert(dirlist, new, &cmp_S);
+		else if (option_check('t') && option_check('r'))
 			dirlist_insert(dirlist, new, &cmp_tr);
 		else if (option_check('t'))
 			dirlist_insert(dirlist, new, &cmp_t);

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 11:24:18 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 14:42:54 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,11 @@ t_filelist	**filelist_add(t_filelist **filelist, t_filelist *new)
 		*filelist = new;
 	else
 	{
-		if (option_check('t') && option_check('r'))
+		if (option_check('S') && option_check('r'))
+			filelist_insert(filelist, new, &cmp_Sr);
+		else if (option_check('S'))
+			filelist_insert(filelist, new, &cmp_S);
+		else if (option_check('t') && option_check('r'))
 			filelist_insert(filelist, new, &cmp_tr);
 		else if (option_check('t'))
 			filelist_insert(filelist, new, &cmp_t);

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 12:14:22 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 13:55:51 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_file_error(char *filepath)
 
 void	print_usage(void)
 {
-	ft_putendl_fd("usage: ft_ls [-lRart1d] [file...]", 2);
+	ft_putendl_fd("usage: ft_ls [-lRartS1d] [file...]", 2);
 }
 
 void	print_illegal_option(char c)

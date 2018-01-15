@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 16:12:21 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 13:41:59 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,6 +169,13 @@ int					cmp_default(t_fileinfo *f1, t_fileinfo *f2);
 int					cmp_r(t_fileinfo *f1, t_fileinfo *f2);
 int					cmp_t(t_fileinfo *f1, t_fileinfo *f2);
 int					cmp_tr(t_fileinfo *f1, t_fileinfo *f2);
+
+/*
+** compare2.c
+*/
+
+int					cmp_S(t_fileinfo *f1, t_fileinfo *f2);
+int					cmp_Sr(t_fileinfo *f1, t_fileinfo *f2);
 
 /*
 ** filelist.c
