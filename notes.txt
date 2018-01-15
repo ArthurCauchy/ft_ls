@@ -1,11 +1,6 @@
-- tester filename avec quotes
 - vérifier qu'on output bien sur la bonne sortie les erreurs et messages
-- ajouter taille totale lue (hors directory et symlink il semblerait) avec l'option -l
-- en fait total c'est le nombre de blocks plus ou moins
-- TODO faire un ft_miniprint_fd
 - TODO check les fuites memoire de miniprint
 - tester fsanitize
-- quand il y a un guillemet autour du nom de fichier affiche l'affichage des autres noms se decale d'un espace a droite
 
 BONUS A CE JOUR :
 -option -1: affichage en collone

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 14:54:00 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 12:01:17 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char	*time_to_str(time_t file_time)
 
 	current_time = time(NULL);
 	ctime_str = ctime(&file_time);
-	if (file_time > current_time - 2629800 && file_time < current_time + 2629800)
+	if (file_time > current_time - 15768000 && file_time < current_time + 15768000)
 		final = ft_strsub(ctime_str, 4, 12);
 	else
 	{

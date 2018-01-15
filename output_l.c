@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 16:17:14 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 11:27:15 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	apply_col_sizes(int *col_sizes, t_list *lplist)
 {
 	t_lprint	*lp;
 	char		*tmp;
-
+	
 	while (lplist)
 	{
 		lp = (t_lprint*)lplist->content;

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:56:10 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 10:56:11 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/15 11:43:31 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ int	cmp_t(t_fileinfo *f1, t_fileinfo *f2)
 
 	t1 = f1->mtime;
 	t2 = f2->mtime;
+	if (t1 == t2)
+		return (cmp_default(f1, f2));
 	return (t2 - t1);
 }
 
