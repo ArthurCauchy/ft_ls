@@ -1,7 +1,6 @@
-- vérifier qu'on output bien sur la bonne sortie les erreurs et messages
 - TODO check les fuites memoire de miniprint
 - tester fsanitize
-- return 1 en cas d'erreur, meme si une seule
+- sur linux si dossier -> affichage annee systematique. check MAC OS
 
 BONUS A CE JOUR :
 -option -1: affichage en collone

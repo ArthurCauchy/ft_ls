@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/15 13:41:59 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/16 19:46:54 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 
 # define MAX_PATH_SIZE 4096
 
-extern char			g_options[64];;
+extern int			g_retcode;
+extern char			g_options[64];
 
 typedef struct	s_fileinfo
 {

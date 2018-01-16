@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/15 13:55:51 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/16 20:03:30 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 void	print_error(char *errmsg)
 {
+	g_retcode = EXIT_FAILURE;
 	if (errmsg)
 		ft_putendl_fd(errmsg, 2);
 	else
@@ -30,6 +31,7 @@ void	print_error(char *errmsg)
 
 void	print_file_error(char *filepath)
 {
+	g_retcode = EXIT_FAILURE;
 	ft_putstr_fd("ft_ls: ", 2);
 	ft_putstr_fd(filepath, 2);
 	ft_putstr_fd(": ", 2);
@@ -54,6 +56,8 @@ void	print_illegal_option(char c)
 
 void	print_errlist(t_errlist *errlist)
 {
+	if (errlist)
+		g_retcode = EXIT_FAILURE;
 	while (errlist)
 	{
 		ft_putstr_fd("ft_ls: ", 2);
