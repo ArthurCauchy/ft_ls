@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/15 11:27:15 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/16 21:13:34 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void	print_l_line(t_fileinfo *fileinfo, int short_name, int pos)
 	total += fileinfo->blocks;
 	lp_new = lprint_new(fileinfo, short_name);
 	ft_lstpushback(&lprintlist, ft_lstnew((void*)lp_new, sizeof(t_lprint)));
+	lprint_delete((void*)lp_new, 0);
 	read_col_sizes(col_sizes, lp_new);
 	if (pos == 1 || pos == 2)
 	{

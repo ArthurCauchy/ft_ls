@@ -1,6 +1,6 @@
-- TODO check les fuites memoire de miniprint
 - tester fsanitize
 - sur linux si dossier -> affichage annee systematique. check MAC OS
+- gerer les erreurs etrange de leaks avec recursif sur /
 
 BONUS A CE JOUR :
 -option -1: affichage en collone
