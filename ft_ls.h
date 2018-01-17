@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/16 19:46:54 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/17 13:38:22 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ void		lprint_print(t_list *elem);
 ** utils.c
 */
 
-void		exit_error(void);
+void		exit_error(char *msg);
 char		*get_name_only(char *path);
 char		*get_filepath(char *dirpath, char *filename);
 char		*time_to_str(time_t time);

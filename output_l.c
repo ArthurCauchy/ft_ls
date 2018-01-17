@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/16 21:13:34 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/17 16:29:55 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,21 +70,25 @@ void	print_l_line(t_fileinfo *fileinfo, int short_name, int pos)
 	static int				*col_sizes;
 	static unsigned	long	total = 0;
 	static t_list			*lprintlist = NULL;
+	static t_list			*lprintlist_tail = NULL;
 	t_lprint				*lp_new;
 
 	if (!col_sizes)
 		col_sizes = ft_memalloc(4 * sizeof(int));
 	total += fileinfo->blocks;
 	lp_new = lprint_new(fileinfo, short_name);
-	ft_lstpushback(&lprintlist, ft_lstnew((void*)lp_new, sizeof(t_lprint)));
-	lprint_delete((void*)lp_new, 0);
+	lprintlist_tail = ft_lstpushback(&lprintlist_tail, ft_lstnew((void*)lp_new, sizeof(t_lprint)));
+	if (!lprintlist)
+		lprintlist = lprintlist_tail;
 	read_col_sizes(col_sizes, lp_new);
+	free(lp_new);
 	if (pos == 1 || pos == 2)
 	{
 		ft_miniprint("total %l0d%\n", &total);
 		apply_col_sizes(col_sizes, lprintlist);
 		ft_lstiter(lprintlist, &lprint_print);
 		ft_lstdel(&lprintlist, &lprint_delete);
+		lprintlist_tail = NULL;
 		free(col_sizes);
 		col_sizes = NULL;
 		total = 0;

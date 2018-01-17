@@ -6,7 +6,7 @@
 #    By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 15:57:30 by acauchy           #+#    #+#              #
-#    Updated: 2018/01/11 15:56:18 by arthur           ###   ########.fr        #
+#    Updated: 2018/01/17 15:00:24 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COLOR_YELLOW = "\033[1;33;40m"
 COLOR_CYAN = "\033[1;36;40m"
 COLOR_RESET = "\033[0m"
 
-CC = gcc
+CC = gcc -g3
 
 CFLAGS = -Wall -Wextra -Werror
 

@@ -1,6 +1,5 @@
 - tester fsanitize
-- sur linux si dossier -> affichage annee systematique. check MAC OS
-- gerer les erreurs etrange de leaks avec recursif sur /
+- tester /usr
 
 BONUS A CE JOUR :
 -option -1: affichage en collone

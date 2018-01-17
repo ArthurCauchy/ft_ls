@@ -6,18 +6,18 @@
 /*   By: acauchy <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 09:57:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/11 18:05:03 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/17 14:48:03 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstpushback(t_list **alst, t_list *new)
+t_list	*ft_lstpushback(t_list **alst, t_list *new)
 {
 	t_list	*elem;
 
 	if (!new || !alst)
-		return ;
+		return (NULL);
 	if (*alst)
 	{
 		elem = *alst;
@@ -27,4 +27,5 @@ void	ft_lstpushback(t_list **alst, t_list *new)
 	}
 	else
 		*alst = new;
+	return (new);
 }

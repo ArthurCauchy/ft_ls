@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:56:16 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/09 14:14:37 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/17 14:49:34 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void				register_err(char *input, t_errlist **errlist)
 	new = NULL;
 	errmsg = ft_strdup(strerror(errno));
 	if (!errmsg || !(new = errlist_new(input, errmsg)))
-		exit_error();
+		exit_error("error: register_err");
 	errlist_add(errlist, new);
 }

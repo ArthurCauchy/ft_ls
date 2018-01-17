@@ -6,15 +6,15 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/15 12:01:17 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/17 15:41:01 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	exit_error(void)
+void	exit_error(char *msg)
 {
-	print_error(NULL);
+	print_error(msg);
 	exit(EXIT_FAILURE);
 }
 

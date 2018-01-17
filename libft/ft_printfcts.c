@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/21 14:56:35 by acauchy           #+#    #+#             */
-/*   Updated: 2017/12/21 16:55:43 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/17 14:48:44 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void		print_integer(t_arg *arg, void *realarg)
 	int			len;
 	int			padding;
 	int			i;
-	
+
 	nbr = *(int*)realarg;
 	len = ft_nbrlen(nbr);
 	padding = arg->width - len;

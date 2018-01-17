@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/13 16:16:32 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/17 16:22:46 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,10 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 			continue;
 		tmp_name = get_filepath(dirpath, file_tmp->d_name);
 		if (lstat(tmp_name, &stat_info) < 0)
-			return (-1);
+		{
+			free(tmp_name);
+			continue ;
+		}
 		filelist_add(files, filelist_new(tmp_name, &stat_info));
 		if (option_check('R') && S_ISDIR(stat_info.st_mode)
 				&& is_not_dot(file_tmp->d_name))
@@ -56,7 +59,10 @@ static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist 
 	*subdirs = NULL;
 	*files = NULL;
 	if (explore_dir(dirlist->fileinfo->path, files, subdirs) == -1)
+	{
+		g_retcode = EXIT_FAILURE;
 		print_file_error(dirlist->fileinfo->path);
+	}
 	else
 		print_dir(dirlist, *files, is_first);
 }
