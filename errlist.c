@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:56:16 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 14:56:13 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 17:02:25 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,10 @@ void				register_err(char *input, t_errlist **errlist)
 		exit_error("error: register_err");
 	errlist_add(errlist, new);
 }
+
+/*
+** Delete an element of the errlist.
+*/
 
 void				delete_errlist(t_errlist *errlist)
 {

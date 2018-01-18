@@ -6,11 +6,25 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 13:19:44 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 17:20:16 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Retrieves the filetype of a mode_t.
+**
+** params :
+** 1) the mode_t field of a struct stat
+**
+** return :
+** A character that identify the filetype :
+**   - = regular file
+**   d = directory
+**   l = symlink
+**   ...
+*/
 
 static char		get_filetype(mode_t file_mode)
 {
@@ -33,6 +47,17 @@ static char		get_filetype(mode_t file_mode)
 	else
 		return ('u');
 }
+
+/*
+** Convert a mode_t variable to a human readable string.
+**
+** params :
+** 1) the mode_t field of a struct stat
+**
+** return :
+** A dynamically allocated NTCTS of the file's mode.
+**   ex : -rw-r--r--
+*/
 
 char			*mode_to_str(mode_t file_mode)
 {
@@ -60,6 +85,17 @@ char			*mode_to_str(mode_t file_mode)
 	return (str);
 }
 
+/*
+** Retrieves a symlink's target path.
+**
+** params :
+** 1) The symlink's file path.
+** 2) The symlink's file size.
+**
+** return :
+** A dynamically allocated NTCTS containing the target's path.
+*/
+
 char			*symlink_target_path(char *link_path, off_t file_size)
 {
 	size_t	buffer_size;
@@ -75,6 +111,11 @@ char			*symlink_target_path(char *link_path, off_t file_size)
 	target_path[read_size] = '\0';
 	return (target_path);
 }
+
+/*
+** Free the given fileinfo struct.
+** It must have been allocated and filled.
+*/
 
 void			fileinfo_delete(t_fileinfo *fileinfo)
 {
