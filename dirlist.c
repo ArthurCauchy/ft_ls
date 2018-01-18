@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 14:33:36 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 14:46:43 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Creates a new dirlist element.
-** 
+**
 ** params :
 ** 1) path/name of the directory
 ** 2) a structure returned by stat() or lstat()

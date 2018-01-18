@@ -6,11 +6,22 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:56:16 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:52:08 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 14:56:13 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Creates a new errlist element.
+**
+** params :
+** 1) path/name of the file that caused the error
+** 2) an error message
+**
+** return :
+** The created errlist element, or NULL if it failed.
+*/
 
 static t_errlist	*errlist_new(char *input, char *errmsg)
 {
@@ -23,6 +34,15 @@ static t_errlist	*errlist_new(char *input, char *errmsg)
 	new->next = NULL;
 	return (new);
 }
+
+/*
+** Insert an element in the list.
+** Uses ft_strcmp to know where to perform the insertion.
+**
+** params :
+** 1) the list's head
+** 2) the element to insert
+*/
 
 static void			errlist_insert(t_errlist **errlist, t_errlist *new)
 {
@@ -50,6 +70,18 @@ static void			errlist_insert(t_errlist **errlist, t_errlist *new)
 	}
 }
 
+/*
+** Add an element in the list.
+** The list is ordered using strcmp.
+**
+** params:
+** 1) the list's head
+** 2) the element to add
+**
+** return :
+** The new head of the list.
+*/
+
 static t_errlist	**errlist_add(t_errlist **errlist, t_errlist *new)
 {
 	if (!*errlist)
@@ -58,6 +90,10 @@ static t_errlist	**errlist_add(t_errlist **errlist, t_errlist *new)
 		errlist_insert(errlist, new);
 	return (errlist);
 }
+
+/*
+** Registers a new error.
+*/
 
 void				register_err(char *input, t_errlist **errlist)
 {
