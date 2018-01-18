@@ -6,11 +6,16 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:56:10 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:06:05 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 14:22:15 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Compare the two files on their
+** size value.
+*/
 
 int	cmp_s(t_fileinfo *f1, t_fileinfo *f2)
 {
@@ -23,6 +28,11 @@ int	cmp_s(t_fileinfo *f1, t_fileinfo *f2)
 		return (cmp_default(f1, f2));
 	return (s2 - s1);
 }
+
+/*
+** Compare the two files on their
+** size value. Then reverse it.
+*/
 
 int	cmp_sr(t_fileinfo *f1, t_fileinfo *f2)
 {

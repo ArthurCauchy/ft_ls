@@ -6,11 +6,22 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:13:27 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 14:33:36 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Creates a new dirlist element.
+** 
+** params :
+** 1) path/name of the directory
+** 2) a structure returned by stat() or lstat()
+**
+** return :
+** The created dirlist element, or NULL if it failed.
+*/
 
 t_dirlist	*dirlist_new(char *input,
 		struct stat *stat_info)
@@ -28,6 +39,16 @@ t_dirlist	*dirlist_new(char *input,
 	new->next = NULL;
 	return (new);
 }
+
+/*
+** Insert an element in the list.
+** Uses a comparison func to know where to perform the insertion.
+**
+** params :
+** 1) the list's head
+** 2) the element to insert
+** 3) a comparision function
+*/
 
 void		dirlist_insert(t_dirlist **dirlist,
 		t_dirlist *new,
@@ -58,6 +79,18 @@ void		dirlist_insert(t_dirlist **dirlist,
 	prev->next = new;
 }
 
+/*
+** Add an element in the list.
+** The list is ordered accoringly to sort options in the g_options global.
+**
+** params:
+** 1) the list's head
+** 2) the element to add
+**
+** return :
+** The new head of the list.
+*/
+
 t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 {
 	if (!*dirlist)
@@ -79,6 +112,10 @@ t_dirlist	**dirlist_add(t_dirlist **dirlist, t_dirlist *new)
 	}
 	return (dirlist);
 }
+
+/*
+** Delete an element of the dirlist.
+*/
 
 void		dirlist_delete(t_dirlist *dirlist)
 {
