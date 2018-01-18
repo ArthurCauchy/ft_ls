@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:12:00 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/17 17:52:27 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 10:38:19 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,15 @@ void		read_params(char **argv, t_filelist **filelist,
 	is_opt = 1;
 	while (argv[i])
 	{
-		if (is_opt && !read_option(argv[i]))
-			is_opt = 0;
-		if (!is_opt)
+		if (is_opt == 1)
+			is_opt = read_option(argv[i]);
+		if (is_opt == 0)
+		{
 			if (load_file(argv[i], filelist, dirlist) == -1)
 				register_err(argv[i], errlist);
+		}
+		else if (is_opt == 2)
+			is_opt = 0;
 		++i;
 	}
 	if (!*filelist && !*dirlist && !*errlist)

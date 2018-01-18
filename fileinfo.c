@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/08 20:34:31 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/18 13:19:44 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char		get_filetype(mode_t file_mode)
 		return ('u');
 }
 
-static char		*mode_to_str(mode_t file_mode)
+char			*mode_to_str(mode_t file_mode)
 {
 	char	*str;
 
@@ -60,7 +60,7 @@ static char		*mode_to_str(mode_t file_mode)
 	return (str);
 }
 
-static char		*symlink_target_path(char *link_path, off_t file_size)
+char			*symlink_target_path(char *link_path, off_t file_size)
 {
 	size_t	buffer_size;
 	char	*target_path;
@@ -75,64 +75,6 @@ static char		*symlink_target_path(char *link_path, off_t file_size)
 	target_path[read_size] = '\0';
 	return (target_path);
 }
-
-#ifdef __APPLE__
-
-t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
-{
-	t_fileinfo	*new;
-
-	if (!(new = (t_fileinfo*)malloc(sizeof(t_fileinfo))))
-		return (NULL);
-	new->path = input;
-	new->mode = mode_to_str(file_info->st_mode);
-	new->nlink = file_info->st_nlink;
-	new->uid = file_info->st_uid;
-	new->gid = file_info->st_gid;
-	new->size = file_info->st_size;
-	new->blocks = file_info->st_blocks;
-	new->mtime = file_info->st_mtimespec.tv_sec;
-	if (new->mode[0] == 'l')
-		new->target_path = symlink_target_path(new->path, new->size);
-	else
-		new->target_path = NULL;
-	if (new->mode[0] == 'b' || new->mode[0] == 'c')
-	{
-		new->major = major(file_info->st_rdev);
-		new->minor = minor(file_info->st_rdev);
-	}
-	return (new);
-}
-
-#else
-
-t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
-{
-	t_fileinfo	*new;
-
-	if (!(new = (t_fileinfo*)malloc(sizeof(t_fileinfo))))
-		return (NULL);
-	new->path = input;
-	new->mode = mode_to_str(file_info->st_mode);
-	new->nlink = file_info->st_nlink;
-	new->uid = file_info->st_uid;
-	new->gid = file_info->st_gid;
-	new->size = file_info->st_size;
-	new->blocks = file_info->st_blocks;
-	new->mtime = file_info->st_mtim.tv_sec;
-	if (new->mode[0] == 'l')
-		new->target_path = symlink_target_path(new->path, new->size);
-	else
-		new->target_path = NULL;
-	if (new->mode[0] == 'b' || new->mode[0] == 'c')
-	{
-		new->major = major(file_info->st_rdev);
-		new->minor = minor(file_info->st_rdev);
-	}
-	return (new);
-}
-
-#endif
 
 void			fileinfo_delete(t_fileinfo *fileinfo)
 {

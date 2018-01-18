@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:46 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/17 16:22:46 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 13:50:01 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static int	explore_dir(char *dirpath, t_filelist **files, t_dirlist **subdirs)
 	return (0);
 }
 
-static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist **files, int is_first)
+static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs,
+		t_filelist **files, int is_first)
 {
 	*subdirs = NULL;
 	*files = NULL;
@@ -67,7 +68,8 @@ static void	process_one_dir(t_dirlist *dirlist, t_dirlist **subdirs, t_filelist 
 		print_dir(dirlist, *files, is_first);
 }
 
-void		process_dirs(t_dirlist *dirlist, t_filelist *filelist, t_errlist *errlist)
+void		process_dirs(t_dirlist *dirlist,
+		t_filelist *filelist, t_errlist *errlist)
 {
 	t_dirlist	*prev;
 	t_dirlist	*subdirs;
@@ -88,6 +90,10 @@ void		process_dirs(t_dirlist *dirlist, t_filelist *filelist, t_errlist *errlist)
 		prev = dirlist;
 		dirlist = dirlist->next;
 		dirlist_delete(prev);
-		process_dirs(subdirs, filelist, errlist);
+		if (subdirs)
+		{
+			ft_putchar('\n');
+			process_dirs(subdirs, filelist, errlist);
+		}
 	}
 }

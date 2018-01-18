@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 10:01:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/16 19:56:29 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/18 10:36:39 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static int	is_valid_option(char opt_char)
 /*
 ** WARNING: 'options' parameter MUST be initialized
 ** as a NTCTS of min size of 6 (\0 included)
-** Return: 0 if str isn't an option, 1 if it is
+** Return: 0 if str isn't an option, 1 if it is, 2 if it's '--'
 */
 
 int			read_option(char *str)
@@ -75,7 +75,7 @@ int			read_option(char *str)
 		return (0);
 	++i;
 	if (str[i] == '-')
-		return (0);
+		return (2);
 	while (str[i])
 	{
 		if (is_valid_option(str[i]))

@@ -6,11 +6,12 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/01/17 15:10:21 by acauchy          ###   ########.fr        #
+#    Updated: 2018/01/18 13:18:28 by acauchy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SHELL:=/bin/bash
+UNAME_S := $(shell uname -s)
 
 .PHONY: all clean fclean re compile
 
@@ -42,6 +43,12 @@ SRC_NAME =	main.c \
 		output_l.c \
 		lprint.c \
 		utils.c
+
+ifeq ($(UNAME_S),Darwin)
+	SRC_NAME += fileinfo2_macos.c
+else
+	SRC_NAME += fileinfo_default.c
+endif
 
 OBJ_PATH = objs
 OBJ_NAME = $(SRC_NAME:.c=.o)

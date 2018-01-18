@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/17 16:58:48 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 11:53:25 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void		lprint_delete(void *lprint, size_t size)
 {
 	size = 0 * size;
-
 	free(((t_lprint*)lprint)->mode);
 	free(((t_lprint*)lprint)->nlink);
 	free(((t_lprint*)lprint)->uid);
@@ -43,7 +42,7 @@ static char	*major_minor_to_str(t_fileinfo *fileinfo)
 	return (final);
 }
 
-static char *name_and_syml_to_str(t_fileinfo *fileinfo, int short_name)
+static char	*name_and_syml_to_str(t_fileinfo *fileinfo, int short_name)
 {
 	char	*final;
 
@@ -62,7 +61,7 @@ static char *name_and_syml_to_str(t_fileinfo *fileinfo, int short_name)
 t_lprint	*lprint_new(t_fileinfo *fileinfo, int short_name)
 {
 	t_lprint	*new;
-	
+
 	new = (t_lprint*)malloc(sizeof(t_lprint));
 	new->mode = ft_strdup(fileinfo->mode);
 	new->nlink = ft_itoa(fileinfo->nlink);

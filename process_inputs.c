@@ -6,15 +6,21 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:59 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/11 17:34:06 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/18 13:41:16 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-void	process_inputs(t_filelist *filelist, t_dirlist *dirlist, t_errlist *errlist)
+void	process_inputs(t_filelist *filelist,
+		t_dirlist *dirlist, t_errlist *errlist)
 {
+	int	files_and_dir;
+
+	files_and_dir = filelist && dirlist;
 	process_files(filelist, 0);
+	if (files_and_dir)
+		ft_putchar('\n');
 	process_dirs(dirlist, filelist, errlist);
 }
 

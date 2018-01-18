@@ -1,7 +1,5 @@
-- tester fsanitize
-- tester /usr
-
 BONUS A CE JOUR :
 -option -1: affichage en collone
 -option -d: ne pas afficher le contenu des dossiers
 -option -S: trier par taille de fichier
+(-option --)
