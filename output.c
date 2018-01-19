@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:33:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:03:50 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 19:01:40 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,20 @@ void	print_usage(void)
 	ft_putendl_fd("usage: ft_ls [-lRartS1d] [file...]", 2);
 }
 
+/*
+** Print an error message saying that the given char is an invalid option.
+*/
+
 void	print_illegal_option(char c)
 {
 	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
 }
+
+/*
+** Display all elements of an errlist.
+*/
 
 void	print_errlist(t_errlist *errlist)
 {

@@ -6,11 +6,22 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 13:11:38 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 18:38:28 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Creates a new fileinfo element.
+**
+** params :
+** 1) path/name of the file
+** 2) a stat struct returned by stat() or lstat()
+**
+** return :
+** The created fileinfo element, or NULL if it failed.
+*/
 
 t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 {

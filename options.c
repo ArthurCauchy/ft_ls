@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 10:01:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 10:36:39 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 18:58:55 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ int			option_check(char opt_char)
 }
 
 /*
-** WARNING: 'options' parameter MUST be initialized
-** as a NTCTS of min size of 6 (\0 included)
 ** Check if the option is already in the option array,
 ** and if it isn't, add it.
 */
@@ -45,6 +43,11 @@ static void	add_option(char opt_char)
 	if (!option_check(opt_char))
 		g_options[opt_count++] = opt_char;
 }
+
+/*
+** Check if the given char is a valid option for out program.
+** retrun 1 : yes, return 0 : no
+*/
 
 static int	is_valid_option(char opt_char)
 {
@@ -61,8 +64,6 @@ static int	is_valid_option(char opt_char)
 }
 
 /*
-** WARNING: 'options' parameter MUST be initialized
-** as a NTCTS of min size of 6 (\0 included)
 ** Return: 0 if str isn't an option, 1 if it is, 2 if it's '--'
 */
 

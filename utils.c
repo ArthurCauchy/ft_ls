@@ -6,17 +6,28 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 16:41:56 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:04:32 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 18:50:11 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Print the given error message by calling print_error, then exit.
+*/
 
 void	exit_error(char *msg)
 {
 	print_error(msg);
 	exit(EXIT_FAILURE);
 }
+
+/*
+** Returns the filename contained in the given file path.
+**
+** No new string is actually created,
+** a pointer to the character starting the filename is returned.
+*/
 
 char	*get_name_only(char *path)
 {
@@ -38,6 +49,11 @@ char	*get_name_only(char *path)
 	}
 	return (name_start);
 }
+
+/*
+** Given a directory path and the filename of a file in this directory,
+** generate a new string containing the filepath.
+*/
 
 char	*get_filepath(char *dirpath, char *filename)
 {
@@ -62,6 +78,13 @@ char	*get_filepath(char *dirpath, char *filename)
 	filepath[i] = '\0';
 	return (ft_strdup(filepath));
 }
+
+/*
+** Convert time_t stamp to a 10 characters human-readable string.
+** The conversion is done the same way ls does it.
+** If the date is more than 6 month later or before,
+** year is shown instead of hours:minutes.
+*/
 
 char	*time_to_str(time_t file_time)
 {

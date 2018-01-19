@@ -6,13 +6,15 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:52 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/11 17:34:45 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/18 19:05:58 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 /*
+** Print a file. Uses the g_options global to decide how to print it.
+**
 ** params :
 ** 1) fileinfo to print
 ** 2) short name format ? 1 = yes, 0 = no
@@ -29,6 +31,10 @@ void	print_file(t_fileinfo *fileinfo, int short_name, int pos)
 		print_default(fileinfo, short_name, pos);
 }
 
+/*
+** Prints a file's filename.
+*/
+
 void	print_default(t_fileinfo *fileinfo, int short_name, int pos)
 {
 	if (pos != -1 && pos != 2)
@@ -40,6 +46,10 @@ void	print_default(t_fileinfo *fileinfo, int short_name, int pos)
 	if (pos > 0)
 		ft_putchar('\n');
 }
+
+/*
+** Prints a file's filename and a newline.
+*/
 
 void	print_line(t_fileinfo *fileinfo, int short_name)
 {

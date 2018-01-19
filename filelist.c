@@ -6,11 +6,22 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:46:36 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:06:53 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/19 13:37:04 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Creates a new filelist element.
+**
+** params :
+** 1) path/name of the file
+** 2) a structure returned by stat() or lstat()
+**
+** return :
+** The created filelist element, or NULL if it failed.
+*/
 
 t_filelist	*filelist_new(char *input, struct stat *stat_info)
 {
@@ -26,6 +37,16 @@ t_filelist	*filelist_new(char *input, struct stat *stat_info)
 	new->next = NULL;
 	return (new);
 }
+
+/*
+** Insert an element in the list.
+** Uses a comparison func to know where to perform the insertion.
+**
+** params :
+** 1) the list's head
+** 2) the element to insert
+** 3) a comparision function
+*/
 
 static void	filelist_insert(t_filelist **filelist,
 		t_filelist *new,
@@ -56,6 +77,18 @@ static void	filelist_insert(t_filelist **filelist,
 	prev->next = new;
 }
 
+/*
+** Add an element in the list.
+** The list is ordered accoringly to sort options in the g_options global.
+**
+** params:
+** 1) the list's head
+** 2) the element to add
+**
+** return :
+** The new head of the list.
+*/
+
 t_filelist	**filelist_add(t_filelist **filelist, t_filelist *new)
 {
 	if (!*filelist)
@@ -77,6 +110,10 @@ t_filelist	**filelist_add(t_filelist **filelist, t_filelist *new)
 	}
 	return (filelist);
 }
+
+/*
+** Delete an element of the filelist.
+*/
 
 void		filelist_delete(t_filelist *filelist)
 {

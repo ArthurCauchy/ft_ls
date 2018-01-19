@@ -6,7 +6,7 @@
 #    By: acauchy <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 10:04:49 by acauchy           #+#    #+#              #
-#    Updated: 2018/01/18 13:18:28 by acauchy          ###   ########.fr        #
+#    Updated: 2018/01/18 18:29:36 by arthur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC_NAME =	main.c \
 ifeq ($(UNAME_S),Darwin)
 	SRC_NAME += fileinfo2_macos.c
 else
-	SRC_NAME += fileinfo_default.c
+	SRC_NAME += fileinfo2_default.c
 endif
 
 OBJ_PATH = objs

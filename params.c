@@ -6,11 +6,16 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 13:12:00 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 10:38:19 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 19:15:01 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Creates a copy of a file's path/name,
+** removes the slash at the end of it then return it.
+*/
 
 static char	*delete_dir_slash(char *input)
 {
@@ -25,6 +30,17 @@ static char	*delete_dir_slash(char *input)
 	return (new);
 }
 
+/*
+** Given a path, try to import a file.
+**
+** params :
+** 1) (maybe) the filepath
+** 2) filelist -> import here if valid file
+** 3) dirlist -> import here too if valid dir
+**
+** return : 0 = success, -1 : error (not critical)
+*/
+
 int			load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
 {
 	struct stat	stat_info;
@@ -38,6 +54,11 @@ int			load_file(char *input, t_filelist **filelist, t_dirlist **dirlist)
 		filelist_add(filelist, filelist_new(ft_strdup(input), &stat_info));
 	return (0);
 }
+
+/*
+** Read the params from an argument array,
+** then fill filelist, dirlist and errlist accordingly.
+*/
 
 void		read_params(char **argv, t_filelist **filelist,
 		t_dirlist **dirlist, t_errlist **errlist)

@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:40:01 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 14:05:24 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 19:57:37 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,21 @@
 
 # define MAX_PATH_SIZE 4096
 
+/*
+** Contains the code our program will returns at the end.
+** Changed to EXIT_FAILURE if we encounter one or more error.
+*/
 extern int			g_retcode;
+
+/*
+** Contains the options given to the program.
+** 1 char = 1 option
+*/
 extern char			g_options[64];
 
+/*
+** This struct can contain every useful info on a file.
+*/
 typedef struct	s_fileinfo
 {
 	char		*path;
@@ -50,12 +62,18 @@ typedef struct	s_fileinfo
 	dev_t		minor;
 }				t_fileinfo;
 
+/*
+** Represents a list of files.
+*/
 typedef struct	s_filelist
 {
 	struct s_fileinfo	*fileinfo;
 	struct s_filelist	*next;
 }				t_filelist;
 
+/*
+** Represents a list of directories.
+*/
 typedef struct	s_dirlist
 {
 	struct s_fileinfo	*fileinfo;
@@ -63,6 +81,9 @@ typedef struct	s_dirlist
 	struct s_dirlist	*next;
 }				t_dirlist;
 
+/*
+** Represents a list of errors.
+*/
 typedef struct	s_errlist
 {
 	char				*input;
@@ -70,6 +91,10 @@ typedef struct	s_errlist
 	struct s_errlist	*next;
 }				t_errlist;
 
+/*
+** Represents a line of detailed print.
+** Used to adjust col offsets before actually printing it.
+*/
 typedef struct	s_lprint
 {
 	char			*mode;

@@ -6,11 +6,16 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:50:59 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 13:41:16 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 19:34:35 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Basically process everthing that needs to be done by our program after
+** reading parameters and options.
+*/
 
 void	process_inputs(t_filelist *filelist,
 		t_dirlist *dirlist, t_errlist *errlist)
@@ -25,7 +30,8 @@ void	process_inputs(t_filelist *filelist,
 }
 
 /*
-** Process the files given (print and free actually)
+** Process the given files (print and free actually).
+**
 ** params :
 ** 1) filelist : files to print
 ** 2) short name format ? 1 = yes, 0 = no

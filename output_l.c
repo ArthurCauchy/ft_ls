@@ -6,11 +6,16 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 13:02:12 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 19:52:10 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Read the col sizes of an lprint struct element,
+** then updates col_sizes accordingly.
+*/
 
 static void	read_col_sizes(int *col_sizes, t_lprint *lp)
 {
@@ -32,6 +37,12 @@ static void	read_col_sizes(int *col_sizes, t_lprint *lp)
 	if (len_size > col_sizes[3])
 		col_sizes[3] = len_size;
 }
+
+/*
+** Ajust sizes of every elements of every lprint in the list
+** to match col_sizes sizes.
+** Performed just before printing.
+*/
 
 static void	apply_col_sizes(int *col_sizes, t_list *lplist)
 {
@@ -57,6 +68,10 @@ static void	apply_col_sizes(int *col_sizes, t_list *lplist)
 	}
 }
 
+/*
+** Actually do the printing of an 'l line'.
+*/
+
 static void	real_print_l_line(unsigned long *total,
 		int *col_sizes, t_list *lprintlist)
 {
@@ -66,6 +81,9 @@ static void	real_print_l_line(unsigned long *total,
 }
 
 /*
+** Prints a file's mode, links, user, group, size, ...
+** then prints a newline.
+**
 ** params :
 ** 1) fileinfo to print
 ** 2) short name format ? 1 = yes, 0 = no

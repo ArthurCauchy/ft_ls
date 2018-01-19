@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 17:20:16 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/19 13:38:14 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,12 @@ char			*symlink_target_path(char *link_path, off_t file_size)
 	if (!(target_path = (char*)malloc(buffer_size)))
 		return (NULL);
 	read_size = readlink(link_path, target_path, buffer_size);
-	if (read_size < 0)
+	if (read_size == -1)
+	{
+		print_file_error(link_path);
+		free(target_path);
 		return (NULL);
+	}
 	target_path[read_size] = '\0';
 	return (target_path);
 }

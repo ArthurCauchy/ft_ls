@@ -6,11 +6,15 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:47 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:53:25 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 19:45:11 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+/*
+** Delete a lprint structure. The function is fit to be used with ft_lstdel()
+*/
 
 void		lprint_delete(void *lprint, size_t size)
 {
@@ -24,6 +28,11 @@ void		lprint_delete(void *lprint, size_t size)
 	free(((t_lprint*)lprint)->filename);
 	free(lprint);
 }
+
+/*
+** Given a file, create a string containing it's
+** human-readable major and minor.
+*/
 
 static char	*major_minor_to_str(t_fileinfo *fileinfo)
 {
@@ -42,6 +51,10 @@ static char	*major_minor_to_str(t_fileinfo *fileinfo)
 	return (final);
 }
 
+/*
+** Basically concatenate a symlink's filename and it's target path.
+*/
+
 static char	*name_and_syml_to_str(t_fileinfo *fileinfo, int short_name)
 {
 	char	*final;
@@ -57,6 +70,16 @@ static char	*name_and_syml_to_str(t_fileinfo *fileinfo, int short_name)
 	}
 	return (final);
 }
+
+/*
+** Create a new lprint element.
+** This structure is fit to be used as content in a t_list structure.
+**
+** params :
+** 1) A fileinfo struct containing information on a file
+** 2) Should we print the file's full path or just it's name ?
+**     0 = path, 1 = name
+*/
 
 t_lprint	*lprint_new(t_fileinfo *fileinfo, int short_name)
 {
@@ -77,6 +100,11 @@ t_lprint	*lprint_new(t_fileinfo *fileinfo, int short_name)
 	new->filename = name_and_syml_to_str(fileinfo, short_name);
 	return (new);
 }
+
+/*
+** Actually print the lprint struct content.
+** Fit to be used with ft_lstiter.
+*/
 
 void		lprint_print(t_list *elem)
 {

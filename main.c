@@ -6,14 +6,27 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/13 10:36:33 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 11:25:33 by acauchy          ###   ########.fr       */
+/*   Updated: 2018/01/18 18:57:14 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
+/*
+** Contains the code our program will returns at the end.
+** Changed to EXIT_FAILURE if we encounter one or more error.
+*/
 int		g_retcode = EXIT_SUCCESS;
+
+/*
+** Contains the options given to the program.
+** 1 char = 1 option
+*/
 char	g_options[64];
+
+/*
+** The main function. Starts everything we need.
+*/
 
 int		main(int argc, char **argv)
 {

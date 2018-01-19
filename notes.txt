@@ -1,5 +1,3 @@
-- TODO documenter fileinfo2_default.c fileinfo2_macos.c filelist.c ft_ls.h lprint.c main.c notes.txt options.c output.c output_dir.c output_file.c output_l.c params.c process_dirs.c process_inputs.c utils.c
-
 BONUS A CE JOUR :
 -option -1: affichage en collone
 -option -d: ne pas afficher le contenu des dossiers
