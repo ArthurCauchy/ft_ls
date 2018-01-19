@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/19 13:38:14 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/19 15:38:08 by arthur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ char			*mode_to_str(mode_t file_mode)
 
 char			*symlink_target_path(char *link_path, off_t file_size)
 {
-	size_t	buffer_size;
+	ssize_t	buffer_size;
 	char	*target_path;
 	ssize_t	read_size;
 
@@ -112,7 +112,7 @@ char			*symlink_target_path(char *link_path, off_t file_size)
 		free(target_path);
 		return (NULL);
 	}
-	target_path[read_size] = '\0';
+	target_path[read_size - 1] = '\0';
 	return (target_path);
 }
 
