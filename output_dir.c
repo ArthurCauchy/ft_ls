@@ -6,14 +6,14 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/08 10:55:37 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/18 19:03:07 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/20 10:51:32 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
 /*
-** Print a directory. 
+** Print a directory.
 **
 ** params:
 ** 1) the directory to print

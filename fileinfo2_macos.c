@@ -6,7 +6,7 @@
 /*   By: acauchy <acauchy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 14:33:23 by acauchy           #+#    #+#             */
-/*   Updated: 2018/01/19 15:56:43 by arthur           ###   ########.fr       */
+/*   Updated: 2018/01/20 10:52:14 by acauchy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_fileinfo		*fileinfo_new(char *input, struct stat *file_info)
 	if (!(new = (t_fileinfo*)malloc(sizeof(t_fileinfo))))
 		return (NULL);
 	if (S_ISLNK(file_info->st_mode) &&
-			!(new->target_path = symlink_target_path(input, file_info->st_size)))
+		!(new->target_path = symlink_target_path(input, file_info->st_size)))
 	{
 		free(new);
 		return (NULL);
